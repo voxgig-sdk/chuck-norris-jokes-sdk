@@ -1,0 +1,30 @@
+# Entity: category
+
+main: kit: entity: category: {
+
+  alias: field: {}
+
+  name: "category"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          method: "GET"
+          orig: "/jokes/categories"
+          parts: [
+            "jokes"
+            "categories"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

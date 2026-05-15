@@ -1,0 +1,29 @@
+# API Information
+
+
+main: {
+  kit: {
+    info: {
+      contact: {
+        email: "info@chucknorris.io"
+        name: "API Support"
+        url: "https://api.chucknorris.io/"
+      }
+      description: "A free JSON API for hand curated Chuck Norris facts, including random jokes and categories. Also offers Slack integration and Facebook Messenger support."
+      license: {
+        name: "Free to use"
+        url: "https://api.chucknorris.io/"
+      }
+      servers: [
+        {
+          description: "Production server"
+          url: "https://api.chucknorris.io"
+        }
+      ]
+      title: "Chuck Norris Jokes API"
+      version: "1.0.0"
+    }
+  }
+}
+
+}

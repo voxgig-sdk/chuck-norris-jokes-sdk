@@ -1,0 +1,279 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Chuck Norris Jokes API",
+    "description": "A free JSON API for hand curated Chuck Norris facts, including random jokes and categories. Also offers Slack integration and Facebook Messenger support.",
+    "version": "1.0.0",
+    "contact": {
+      "name": "API Support",
+      "email": "info@chucknorris.io",
+      "url": "https://api.chucknorris.io/"
+    },
+    "license": {
+      "name": "Free to use",
+      "url": "https://api.chucknorris.io/"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://api.chucknorris.io",
+      "description": "Production server"
+    }
+  ],
+  "paths": {
+    "/jokes/random": {
+      "get": {
+        "summary": "Retrieve a random Chuck Norris joke",
+        "description": "Returns a random Chuck Norris joke in JSON format. Optionally filter by category.",
+        "operationId": "getRandomJoke",
+        "tags": [
+          "Jokes"
+        ],
+        "parameters": [
+          {
+            "name": "category",
+            "in": "query",
+            "description": "Filter jokes by category",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "example": "dev"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with a random Chuck Norris joke",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Joke"
+                },
+                "example": {
+                  "icon_url": "https://api.chucknorris.io/img/avatar/chuck-norris.png",
+                  "id": "4mP0hJgjQN2l2eKkoJ6sDQ",
+                  "url": "https://api.chucknorris.io/jokes/4mP0hJgjQN2l2eKkoJ6sDQ",
+                  "value": "Water boils faster when Chuck Norris is watching it."
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Category not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/jokes/categories": {
+      "get": {
+        "summary": "Retrieve a list of available categories",
+        "description": "Returns an array of available joke categories",
+        "operationId": "getCategories",
+        "tags": [
+          "Categories"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with list of categories",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "example": [
+                  "animal",
+                  "career",
+                  "celebrity",
+                  "dev",
+                  "explicit",
+                  "fashion",
+                  "food",
+                  "history",
+                  "money",
+                  "movie",
+                  "music",
+                  "political",
+                  "religion",
+                  "science",
+                  "sport",
+                  "travel"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "/jokes/search": {
+      "get": {
+        "summary": "Free text search for Chuck Norris jokes",
+        "description": "Search for Chuck Norris jokes using a free text query",
+        "operationId": "searchJokes",
+        "tags": [
+          "Jokes"
+        ],
+        "parameters": [
+          {
+            "name": "query",
+            "in": "query",
+            "description": "The search query term",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "roundhouse"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with search results",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SearchResult"
+                },
+                "example": {
+                  "total": 2,
+                  "result": [
+                    {
+                      "icon_url": "https://api.chucknorris.io/img/avatar/chuck-norris.png",
+                      "id": "abc123",
+                      "url": "https://api.chucknorris.io/jokes/abc123",
+                      "value": "Chuck Norris can roundhouse kick through space and time."
+                    },
+                    {
+                      "icon_url": "https://api.chucknorris.io/img/avatar/chuck-norris.png",
+                      "id": "def456",
+                      "url": "https://api.chucknorris.io/jokes/def456",
+                      "value": "The only thing faster than a Chuck Norris roundhouse kick is Chuck Norris."
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request - query parameter missing or invalid",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Joke": {
+        "type": "object",
+        "properties": {
+          "icon_url": {
+            "type": "string",
+            "format": "uri",
+            "description": "URL to Chuck Norris avatar icon"
+          },
+          "id": {
+            "type": "string",
+            "description": "Unique identifier for the joke"
+          },
+          "url": {
+            "type": "string",
+            "format": "uri",
+            "description": "Direct URL to the joke"
+          },
+          "value": {
+            "type": "string",
+            "description": "The actual Chuck Norris joke text"
+          },
+          "categories": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Categories associated with the joke"
+          }
+        },
+        "required": [
+          "icon_url",
+          "id",
+          "url",
+          "value"
+        ]
+      },
+      "SearchResult": {
+        "type": "object",
+        "properties": {
+          "total": {
+            "type": "integer",
+            "description": "Total number of jokes found"
+          },
+          "result": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Joke"
+            },
+            "description": "Array of jokes matching the search query"
+          }
+        },
+        "required": [
+          "total",
+          "result"
+        ]
+      },
+      "Error": {
+        "type": "object",
+        "properties": {
+          "timestamp": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Timestamp of the error"
+          },
+          "status": {
+            "type": "integer",
+            "description": "HTTP status code"
+          },
+          "error": {
+            "type": "string",
+            "description": "Error type"
+          },
+          "message": {
+            "type": "string",
+            "description": "Error message"
+          },
+          "path": {
+            "type": "string",
+            "description": "API path that generated the error"
+          }
+        }
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Jokes",
+      "description": "Operations related to Chuck Norris jokes"
+    },
+    {
+      "name": "Categories",
+      "description": "Operations related to joke categories"
+    }
+  ],
+  "externalDocs": {
+    "description": "Find more information about the Chuck Norris Jokes API",
+    "url": "https://api.chucknorris.io/"
+  }
+}

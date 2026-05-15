@@ -1,0 +1,67 @@
+<?php
+declare(strict_types=1);
+
+// ChuckNorrisJokes SDK utility registration
+
+require_once __DIR__ . '/../core/UtilityType.php';
+require_once __DIR__ . '/Clean.php';
+require_once __DIR__ . '/Done.php';
+require_once __DIR__ . '/MakeError.php';
+require_once __DIR__ . '/FeatureAdd.php';
+require_once __DIR__ . '/FeatureHook.php';
+require_once __DIR__ . '/FeatureInit.php';
+require_once __DIR__ . '/Fetcher.php';
+require_once __DIR__ . '/MakeFetchDef.php';
+require_once __DIR__ . '/MakeContext.php';
+require_once __DIR__ . '/MakeOptions.php';
+require_once __DIR__ . '/MakeRequest.php';
+require_once __DIR__ . '/MakeResponse.php';
+require_once __DIR__ . '/MakeResult.php';
+require_once __DIR__ . '/MakePoint.php';
+require_once __DIR__ . '/MakeSpec.php';
+require_once __DIR__ . '/MakeUrl.php';
+require_once __DIR__ . '/Param.php';
+require_once __DIR__ . '/PrepareAuth.php';
+require_once __DIR__ . '/PrepareBody.php';
+require_once __DIR__ . '/PrepareHeaders.php';
+require_once __DIR__ . '/PrepareMethod.php';
+require_once __DIR__ . '/PrepareParams.php';
+require_once __DIR__ . '/PreparePath.php';
+require_once __DIR__ . '/PrepareQuery.php';
+require_once __DIR__ . '/ResultBasic.php';
+require_once __DIR__ . '/ResultBody.php';
+require_once __DIR__ . '/ResultHeaders.php';
+require_once __DIR__ . '/TransformRequest.php';
+require_once __DIR__ . '/TransformResponse.php';
+
+ChuckNorrisJokesUtility::setRegistrar(function (ChuckNorrisJokesUtility $u): void {
+    $u->clean = [ChuckNorrisJokesClean::class, 'call'];
+    $u->done = [ChuckNorrisJokesDone::class, 'call'];
+    $u->make_error = [ChuckNorrisJokesMakeError::class, 'call'];
+    $u->feature_add = [ChuckNorrisJokesFeatureAdd::class, 'call'];
+    $u->feature_hook = [ChuckNorrisJokesFeatureHook::class, 'call'];
+    $u->feature_init = [ChuckNorrisJokesFeatureInit::class, 'call'];
+    $u->fetcher = [ChuckNorrisJokesFetcher::class, 'call'];
+    $u->make_fetch_def = [ChuckNorrisJokesMakeFetchDef::class, 'call'];
+    $u->make_context = [ChuckNorrisJokesMakeContext::class, 'call'];
+    $u->make_options = [ChuckNorrisJokesMakeOptions::class, 'call'];
+    $u->make_request = [ChuckNorrisJokesMakeRequest::class, 'call'];
+    $u->make_response = [ChuckNorrisJokesMakeResponse::class, 'call'];
+    $u->make_result = [ChuckNorrisJokesMakeResult::class, 'call'];
+    $u->make_point = [ChuckNorrisJokesMakePoint::class, 'call'];
+    $u->make_spec = [ChuckNorrisJokesMakeSpec::class, 'call'];
+    $u->make_url = [ChuckNorrisJokesMakeUrl::class, 'call'];
+    $u->param = [ChuckNorrisJokesParam::class, 'call'];
+    $u->prepare_auth = [ChuckNorrisJokesPrepareAuth::class, 'call'];
+    $u->prepare_body = [ChuckNorrisJokesPrepareBody::class, 'call'];
+    $u->prepare_headers = [ChuckNorrisJokesPrepareHeaders::class, 'call'];
+    $u->prepare_method = [ChuckNorrisJokesPrepareMethod::class, 'call'];
+    $u->prepare_params = [ChuckNorrisJokesPrepareParams::class, 'call'];
+    $u->prepare_path = [ChuckNorrisJokesPreparePath::class, 'call'];
+    $u->prepare_query = [ChuckNorrisJokesPrepareQuery::class, 'call'];
+    $u->result_basic = [ChuckNorrisJokesResultBasic::class, 'call'];
+    $u->result_body = [ChuckNorrisJokesResultBody::class, 'call'];
+    $u->result_headers = [ChuckNorrisJokesResultHeaders::class, 'call'];
+    $u->transform_request = [ChuckNorrisJokesTransformRequest::class, 'call'];
+    $u->transform_response = [ChuckNorrisJokesTransformResponse::class, 'call'];
+});

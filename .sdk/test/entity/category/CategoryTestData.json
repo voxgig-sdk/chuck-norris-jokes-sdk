@@ -1,0 +1,14 @@
+{
+  "existing": {
+    "category": {
+      "CATEGORY00": {},
+      "CATEGORY01": {},
+      "CATEGORY02": {}
+    }
+  },
+  "new": {
+    "category": {
+      "category_ref01": {}
+    }
+  }
+}

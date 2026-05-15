@@ -1,0 +1,81 @@
+# Entity: joke
+
+main: kit: entity: joke: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "category"
+      req: false
+      type: "`$ARRAY`"
+    }
+    {
+      name: "icon_url"
+      req: true
+      type: "`$STRING`"
+    }
+    {
+      name: "id"
+      req: true
+      type: "`$STRING`"
+    }
+    {
+      name: "url"
+      req: true
+      type: "`$STRING`"
+    }
+    {
+      name: "value"
+      req: true
+      type: "`$STRING`"
+    }
+  ]
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "joke"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          args: {
+            query: [
+              {
+                example: "dev"
+                kind: "query"
+                name: "category"
+                orig: "category"
+                reqd: false
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/jokes/random"
+          parts: [
+            "jokes"
+            "random"
+          ]
+          select: {
+            "$action": "random"
+            exist: [
+              "category"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

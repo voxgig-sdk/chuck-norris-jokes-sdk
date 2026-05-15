@@ -1,0 +1,56 @@
+package voxgigchucknorrisjokessdk
+
+import (
+	"github.com/voxgig-sdk/chuck-norris-jokes-sdk/core"
+	"github.com/voxgig-sdk/chuck-norris-jokes-sdk/entity"
+	"github.com/voxgig-sdk/chuck-norris-jokes-sdk/feature"
+	_ "github.com/voxgig-sdk/chuck-norris-jokes-sdk/utility"
+)
+
+// Type aliases preserve external API.
+type ChuckNorrisJokesSDK = core.ChuckNorrisJokesSDK
+type Context = core.Context
+type Utility = core.Utility
+type Feature = core.Feature
+type Entity = core.Entity
+type ChuckNorrisJokesEntity = core.ChuckNorrisJokesEntity
+type FetcherFunc = core.FetcherFunc
+type Spec = core.Spec
+type Result = core.Result
+type Response = core.Response
+type Operation = core.Operation
+type Control = core.Control
+type ChuckNorrisJokesError = core.ChuckNorrisJokesError
+
+// BaseFeature from feature package.
+type BaseFeature = feature.BaseFeature
+
+func init() {
+	core.NewBaseFeatureFunc = func() core.Feature {
+		return feature.NewBaseFeature()
+	}
+	core.NewTestFeatureFunc = func() core.Feature {
+		return feature.NewTestFeature()
+	}
+	core.NewCategoryEntityFunc = func(client *core.ChuckNorrisJokesSDK, entopts map[string]any) core.ChuckNorrisJokesEntity {
+		return entity.NewCategoryEntity(client, entopts)
+	}
+	core.NewJokeEntityFunc = func(client *core.ChuckNorrisJokesSDK, entopts map[string]any) core.ChuckNorrisJokesEntity {
+		return entity.NewJokeEntity(client, entopts)
+	}
+	core.NewSearchEntityFunc = func(client *core.ChuckNorrisJokesSDK, entopts map[string]any) core.ChuckNorrisJokesEntity {
+		return entity.NewSearchEntity(client, entopts)
+	}
+}
+
+// Constructor re-exports.
+var NewChuckNorrisJokesSDK = core.NewChuckNorrisJokesSDK
+var TestSDK = core.TestSDK
+var NewContext = core.NewContext
+var NewSpec = core.NewSpec
+var NewResult = core.NewResult
+var NewResponse = core.NewResponse
+var NewOperation = core.NewOperation
+var MakeConfig = core.MakeConfig
+var NewBaseFeature = feature.NewBaseFeature
+var NewTestFeature = feature.NewTestFeature
