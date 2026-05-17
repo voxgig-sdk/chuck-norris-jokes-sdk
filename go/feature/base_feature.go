@@ -1,7 +1,7 @@
 package feature
 
 import (
-	"github.com/voxgig-sdk/chuck-norris-jokes-sdk/core"
+	"github.com/voxgig-sdk/chuck-norris-jokes-sdk/go/core"
 )
 
 type BaseFeature struct {

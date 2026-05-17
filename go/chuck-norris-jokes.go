@@ -1,10 +1,10 @@
 package voxgigchucknorrisjokessdk
 
 import (
-	"github.com/voxgig-sdk/chuck-norris-jokes-sdk/core"
-	"github.com/voxgig-sdk/chuck-norris-jokes-sdk/entity"
-	"github.com/voxgig-sdk/chuck-norris-jokes-sdk/feature"
-	_ "github.com/voxgig-sdk/chuck-norris-jokes-sdk/utility"
+	"github.com/voxgig-sdk/chuck-norris-jokes-sdk/go/core"
+	"github.com/voxgig-sdk/chuck-norris-jokes-sdk/go/entity"
+	"github.com/voxgig-sdk/chuck-norris-jokes-sdk/go/feature"
+	_ "github.com/voxgig-sdk/chuck-norris-jokes-sdk/go/utility"
 )
 
 // Type aliases preserve external API.

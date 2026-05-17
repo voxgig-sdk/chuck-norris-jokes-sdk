@@ -9,10 +9,10 @@ import (
 	"testing"
 	"time"
 
-	sdk "github.com/voxgig-sdk/chuck-norris-jokes-sdk"
-	"github.com/voxgig-sdk/chuck-norris-jokes-sdk/core"
+	sdk "github.com/voxgig-sdk/chuck-norris-jokes-sdk/go"
+	"github.com/voxgig-sdk/chuck-norris-jokes-sdk/go/core"
 
-	vs "github.com/voxgig/struct"
+	vs "github.com/voxgig-sdk/chuck-norris-jokes-sdk/go/utility/struct"
 )
 
 func TestSearchEntity(t *testing.T) {

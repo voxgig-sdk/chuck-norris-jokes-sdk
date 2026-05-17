@@ -1,6 +1,6 @@
 package utility
 
-import "github.com/voxgig-sdk/chuck-norris-jokes-sdk/core"
+import "github.com/voxgig-sdk/chuck-norris-jokes-sdk/go/core"
 
 func init() {
 	core.UtilityRegistrar = registerAll

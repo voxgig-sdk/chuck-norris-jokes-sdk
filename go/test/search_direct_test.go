@@ -6,8 +6,8 @@ import (
 	"strings"
 	"testing"
 
-	sdk "github.com/voxgig-sdk/chuck-norris-jokes-sdk"
-	"github.com/voxgig-sdk/chuck-norris-jokes-sdk/core"
+	sdk "github.com/voxgig-sdk/chuck-norris-jokes-sdk/go"
+	"github.com/voxgig-sdk/chuck-norris-jokes-sdk/go/core"
 )
 
 func TestSearchDirect(t *testing.T) {
