@@ -92,7 +92,6 @@ def _search_basic_setup(extra):
         "CHUCKNORRISJOKES_TEST_SEARCH_ENTID": idmap,
         "CHUCKNORRISJOKES_TEST_LIVE": "FALSE",
         "CHUCKNORRISJOKES_TEST_EXPLAIN": "FALSE",
-        "CHUCKNORRISJOKES_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -103,7 +102,6 @@ def _search_basic_setup(extra):
     if env.get("CHUCKNORRISJOKES_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("CHUCKNORRISJOKES_APIKEY"),
             },
             extra or {},
         ])

@@ -22,8 +22,30 @@ main: {
       ]
       title: "Chuck Norris Jokes API"
       version: "1.0.0"
+      tagline: "Fetch hand-curated Chuck Norris facts as JSON, with categories and free-text search"
+      homepage: "https://api.chucknorris.io"
+      docs_url: "https://api.chucknorris.io"
+      license_short: "Free to use; not affiliated with Chuck Norris"
+      license_md: `- Free to use service with no stated rate limits or authentication requirements
+- Not officially affiliated with or endorsed by Chuck Norris
+- Hosted via Jugendstil.io; jokes are community/hand-curated
+- No explicit licence terms published for the joke corpus`
+      about_md: `The [Chuck Norris Jokes API](https://api.chucknorris.io) is a free JSON service that returns hand-curated Chuck Norris facts. It is an independent project (not affiliated with Chuck Norris himself) and also ships Slack and Facebook Messenger integrations.
+
+What you get from the API:
+
+- A random joke via \`/jokes/random\`, returned as a JSON object with \`id\`, \`value\`, \`icon_url\`, \`url\`, and \`categories\`
+- A list of available joke categories via \`/jokes/categories\`
+- A category-filtered random joke via \`/jokes/random?category={name}\`
+- Free-text search across the joke corpus via \`/jokes/search?query={query}\`
+
+No API key or authentication is required. Public documentation does not specify rate limits, and CORS support is not advertised, so browser-side use may need a proxy.`
+      entity_desc: {
+        category: "The set of joke categories available in the corpus, listed via `GET /jokes/categories` and usable as the `category` query parameter on random-joke requests."
+        joke: "A single Chuck Norris fact resource with fields like `id`, `value`, and `icon_url`; fetch one at random via `GET /jokes/random` (optionally filtered by `?category=`)."
+        search: "Free-text lookup across the joke corpus via `GET /jokes/search?query={query}`, returning matching joke objects."
+      }
+      auth: false
     }
   }
-}
-
 }

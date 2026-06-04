@@ -68,14 +68,12 @@ function category_direct_setup($mockres)
     $env = Runner::env_override([
         "CHUCKNORRISJOKES_TEST_CATEGORY_ENTID" => [],
         "CHUCKNORRISJOKES_TEST_LIVE" => "FALSE",
-        "CHUCKNORRISJOKES_APIKEY" => "NONE",
     ]);
 
     $live = $env["CHUCKNORRISJOKES_TEST_LIVE"] === "TRUE";
 
     if ($live) {
         $merged_opts = [
-            "apikey" => $env["CHUCKNORRISJOKES_APIKEY"],
         ];
         $client = new ChuckNorrisJokesSDK($merged_opts);
         return [

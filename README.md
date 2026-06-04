@@ -1,9 +1,99 @@
 # ChuckNorrisJokes SDK
 
+Fetch hand-curated Chuck Norris facts as JSON, with categories and free-text search
 
+> TypeScript, Python, PHP, Golang, Ruby, Lua SDKs, a CLI, an interactive REPL, and an MCP server for AI agents — all generated from one OpenAPI spec by [@voxgig/sdkgen](https://github.com/voxgig/sdkgen).
 
-Available for [Golang](go/) and [Go CLI](go-cli/) and [Go MCP server](go-mcp/) and [Lua](lua/) and [PHP](php/) and [Python](py/) and [Ruby](rb/) and [TypeScript](ts/).
+## About Chuck Norris Jokes API
 
+The [Chuck Norris Jokes API](https://api.chucknorris.io) is a free JSON service that returns hand-curated Chuck Norris facts. It is an independent project (not affiliated with Chuck Norris himself) and also ships Slack and Facebook Messenger integrations.
+
+What you get from the API:
+
+- A random joke via `/jokes/random`, returned as a JSON object with `id`, `value`, `icon_url`, `url`, and `categories`
+- A list of available joke categories via `/jokes/categories`
+- A category-filtered random joke via `/jokes/random?category={name}`
+- Free-text search across the joke corpus via `/jokes/search?query={query}`
+
+No API key or authentication is required. Public documentation does not specify rate limits, and CORS support is not advertised, so browser-side use may need a proxy.
+
+## Try it
+
+**TypeScript**
+```bash
+npm install chuck-norris-jokes
+```
+
+**Python**
+```bash
+pip install chuck-norris-jokes-sdk
+```
+
+**PHP**
+```bash
+composer require voxgig/chuck-norris-jokes-sdk
+```
+
+**Golang**
+```bash
+go get github.com/voxgig-sdk/chuck-norris-jokes-sdk/go
+```
+
+**Ruby**
+```bash
+gem install chuck-norris-jokes-sdk
+```
+
+**Lua**
+```bash
+luarocks install chuck-norris-jokes-sdk
+```
+
+## 30-second quickstart
+
+### TypeScript
+
+```ts
+import { ChuckNorrisJokesSDK } from 'chuck-norris-jokes'
+
+const client = new ChuckNorrisJokesSDK({})
+
+// List all categorys
+const categorys = await client.Category().list()
+```
+
+See the [TypeScript README](ts/README.md) for the
+full guide, or scroll down for the same example in other languages.
+
+## What's in the box
+
+| Surface | Use it for | Path |
+| --- | --- | --- |
+| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | App integration | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
+| **CLI** | Scripts, CI, ops, one-off API calls | `go-cli/` |
+| **MCP server** | AI agents (Claude, Cursor, Cline) | `go-mcp/` |
+
+## Use it from an AI agent (MCP)
+
+The generated MCP server exposes every operation in this SDK as an
+[MCP](https://modelcontextprotocol.io) tool that Claude, Cursor or Cline
+can call directly. Build and register it:
+
+```bash
+cd go-mcp && go build -o chuck-norris-jokes-mcp .
+```
+
+Then add it to your agent's MCP config (Claude Desktop, Cursor, etc.):
+
+```json
+{
+  "mcpServers": {
+    "chuck-norris-jokes": {
+      "command": "/abs/path/to/chuck-norris-jokes-mcp"
+    }
+  }
+}
+```
 
 ## Entities
 
@@ -11,77 +101,24 @@ The API exposes 3 entities:
 
 | Entity | Description | API path |
 | --- | --- | --- |
-| **Category** |  | `/jokes/categories` |
-| **Joke** |  | `/jokes/random` |
-| **Search** |  | `/jokes/search` |
+| **Category** | The set of joke categories available in the corpus, listed via `GET /jokes/categories` and usable as the `category` query parameter on random-joke requests. | `/jokes/categories` |
+| **Joke** | A single Chuck Norris fact resource with fields like `id`, `value`, and `icon_url`; fetch one at random via `GET /jokes/random` (optionally filtered by `?category=`). | `/jokes/random` |
+| **Search** | Free-text lookup across the joke corpus via `GET /jokes/search?query={query}`, returning matching joke objects. | `/jokes/search` |
 
-Each entity supports the following operations where available: **load**, **list**, **create**,
-**update**, and **remove**.
+Each entity supports the following operations where available: **load**,
+**list**, **create**, **update**, and **remove**.
 
+## Quickstart in other languages
 
-## Architecture
+### Python
 
-### Entity-operation model
+```python
+from chucknorrisjokes_sdk import ChuckNorrisJokesSDK
 
-Every SDK call follows the same pipeline:
+client = ChuckNorrisJokesSDK({})
 
-1. **Point** — resolve the API endpoint from the operation definition.
-2. **Spec** — build the HTTP specification (URL, method, headers, body).
-3. **Request** — send the HTTP request.
-4. **Response** — receive and parse the response.
-5. **Result** — extract the result data for the caller.
-
-At each stage a feature hook fires (e.g. `PrePoint`, `PreSpec`,
-`PreRequest`), allowing features to inspect or modify the pipeline.
-
-### Features
-
-Features are hook-based middleware that extend SDK behaviour.
-
-| Feature | Purpose |
-| --- | --- |
-| **TestFeature** | In-memory mock transport for testing without a live server |
-
-You can add custom features by passing them in the `extend` option at
-construction time.
-
-### Direct and Prepare
-
-For endpoints not covered by the entity model, use the low-level methods:
-
-- **`direct(fetchargs)`** — build and send an HTTP request in one step.
-- **`prepare(fetchargs)`** — build the request without sending it.
-
-Both accept a map with `path`, `method`, `params`, `query`, `headers`,
-and `body`.
-
-
-## Quick start
-
-### Golang
-
-```go
-import sdk "github.com/voxgig-sdk/chuck-norris-jokes-sdk/go"
-
-client := sdk.NewChuckNorrisJokesSDK(map[string]any{
-    "apikey": os.Getenv("CHUCK-NORRIS-JOKES_APIKEY"),
-})
-
-// List all categorys
-categorys, err := client.Category(nil).List(nil, nil)
-```
-
-### Lua
-
-```lua
-local sdk = require("chuck-norris-jokes_sdk")
-
-local client = sdk.new({
-  apikey = os.getenv("CHUCK-NORRIS-JOKES_APIKEY"),
-})
-
--- List all categorys
-local categorys, err = client:Category(nil):list(nil, nil)
+# List all categorys
+categorys, err = client.Category(None).list(None, None)
 ```
 
 ### PHP
@@ -90,26 +127,21 @@ local categorys, err = client:Category(nil):list(nil, nil)
 <?php
 require_once 'chucknorrisjokes_sdk.php';
 
-$client = new ChuckNorrisJokesSDK([
-    "apikey" => getenv("CHUCK-NORRIS-JOKES_APIKEY"),
-]);
+$client = new ChuckNorrisJokesSDK([]);
 
 // List all categorys
 [$categorys, $err] = $client->Category(null)->list(null, null);
 ```
 
-### Python
+### Golang
 
-```python
-import os
-from chucknorrisjokes_sdk import ChuckNorrisJokesSDK
+```go
+import sdk "github.com/voxgig-sdk/chuck-norris-jokes-sdk/go"
 
-client = ChuckNorrisJokesSDK({
-    "apikey": os.environ.get("CHUCK-NORRIS-JOKES_APIKEY"),
-})
+client := sdk.NewChuckNorrisJokesSDK(map[string]any{})
 
-# List all categorys
-categorys, err = client.Category(None).list(None, None)
+// List all categorys
+categorys, err := client.Category(nil).List(nil, nil)
 ```
 
 ### Ruby
@@ -117,48 +149,42 @@ categorys, err = client.Category(None).list(None, None)
 ```ruby
 require_relative "ChuckNorrisJokes_sdk"
 
-client = ChuckNorrisJokesSDK.new({
-  "apikey" => ENV["CHUCK-NORRIS-JOKES_APIKEY"],
-})
+client = ChuckNorrisJokesSDK.new({})
 
 # List all categorys
 categorys, err = client.Category(nil).list(nil, nil)
 ```
 
-### TypeScript
-
-```ts
-import { ChuckNorrisJokesSDK } from 'chuck-norris-jokes'
-
-const client = new ChuckNorrisJokesSDK({
-  apikey: process.env.CHUCK-NORRIS-JOKES_APIKEY,
-})
-
-// List all categorys
-const categorys = await client.Category().list()
-```
-
-
-## Testing
-
-Both SDKs provide a test mode that replaces the HTTP transport with an
-in-memory mock, so tests run without a network connection.
-
-### Golang
-
-```go
-client := sdk.TestSDK(nil, nil)
-result, err := client.Category(nil).Load(
-    map[string]any{"id": "test01"}, nil,
-)
-```
-
 ### Lua
 
 ```lua
-local client = sdk.test(nil, nil)
-local result, err = client:Category(nil):load(
-  { id = "test01" }, nil
+local sdk = require("chuck-norris-jokes_sdk")
+
+local client = sdk.new({})
+
+-- List all categorys
+local categorys, err = client:Category(nil):list(nil, nil)
+```
+
+## Unit testing in offline mode
+
+Every SDK ships a test mode that swaps the HTTP transport for an
+in-memory mock, so unit tests run offline.
+
+### TypeScript
+
+```ts
+const client = ChuckNorrisJokesSDK.test()
+const result = await client.Category().load({ id: 'test01' })
+// result.ok === true, result.data contains mock data
+```
+
+### Python
+
+```python
+client = ChuckNorrisJokesSDK.test(None, None)
+result, err = client.Category(None).load(
+    {"id": "test01"}, None
 )
 ```
 
@@ -171,12 +197,12 @@ $client = ChuckNorrisJokesSDK::test(null, null);
 );
 ```
 
-### Python
+### Golang
 
-```python
-client = ChuckNorrisJokesSDK.test(None, None)
-result, err = client.Category(None).load(
-    {"id": "test01"}, None
+```go
+client := sdk.TestSDK(nil, nil)
+result, err := client.Category(nil).Load(
+    map[string]any{"id": "test01"}, nil,
 )
 ```
 
@@ -189,14 +215,46 @@ result, err = client.Category(nil).load(
 )
 ```
 
-### TypeScript
+### Lua
 
-```ts
-const client = ChuckNorrisJokesSDK.test()
-const result = await client.Category().load({ id: 'test01' })
-// result.ok === true, result.data contains mock data
+```lua
+local client = sdk.test(nil, nil)
+local result, err = client:Category(nil):load(
+  { id = "test01" }, nil
+)
 ```
 
+## How it works
+
+Every SDK call runs the same five-stage pipeline:
+
+1. **Point** — resolve the API endpoint from the operation definition.
+2. **Spec** — build the HTTP specification (URL, method, headers, body).
+3. **Request** — send the HTTP request.
+4. **Response** — receive and parse the response.
+5. **Result** — extract the result data for the caller.
+
+A feature hook fires at each stage (e.g. `PrePoint`, `PreSpec`,
+`PreRequest`), so features can inspect or modify the pipeline without
+forking the SDK.
+
+### Features
+
+| Feature | Purpose |
+| --- | --- |
+| **TestFeature** | In-memory mock transport for testing without a live server |
+
+Pass custom features via the `extend` option at construction time.
+
+### Direct and Prepare
+
+For endpoints the entity model doesn't cover, use the low-level methods:
+
+- **`direct(fetchargs)`** — build and send an HTTP request in one step.
+- **`prepare(fetchargs)`** — build the request without sending it.
+
+Both accept a map with `path`, `method`, `params`, `query`,
+`headers`, and `body`. See the [How-to guides](#how-to-guides) below.
 
 ## How-to guides
 
@@ -204,21 +262,22 @@ const result = await client.Category().load({ id: 'test01' })
 
 When the entity interface does not cover an endpoint, use `direct`:
 
-**Go:**
-```go
-result, err := client.Direct(map[string]any{
-    "path":   "/api/resource/{id}",
-    "method": "GET",
-    "params": map[string]any{"id": "example"},
+**TypeScript:**
+```ts
+const result = await client.direct({
+  path: '/api/resource/{id}',
+  method: 'GET',
+  params: { id: 'example' },
 })
+console.log(result.data)
 ```
 
-**Lua:**
-```lua
-local result, err = client:direct({
-  path = "/api/resource/{id}",
-  method = "GET",
-  params = { id = "example" },
+**Python:**
+```python
+result, err = client.direct({
+    "path": "/api/resource/{id}",
+    "method": "GET",
+    "params": {"id": "example"},
 })
 ```
 
@@ -231,12 +290,12 @@ local result, err = client:direct({
 ]);
 ```
 
-**Python:**
-```python
-result, err = client.direct({
-    "path": "/api/resource/{id}",
+**Go:**
+```go
+result, err := client.Direct(map[string]any{
+    "path":   "/api/resource/{id}",
     "method": "GET",
-    "params": {"id": "example"},
+    "params": map[string]any{"id": "example"},
 })
 ```
 
@@ -249,25 +308,33 @@ result, err = client.direct({
 })
 ```
 
-**TypeScript:**
-```ts
-const result = await client.direct({
-  path: '/api/resource/{id}',
-  method: 'GET',
-  params: { id: 'example' },
+**Lua:**
+```lua
+local result, err = client:direct({
+  path = "/api/resource/{id}",
+  method = "GET",
+  params = { id = "example" },
 })
-console.log(result.data)
 ```
 
+## Per-language documentation
 
-## Language-specific documentation
+- [TypeScript](ts/README.md)
+- [Python](py/README.md)
+- [PHP](php/README.md)
+- [Golang](go/README.md)
+- [Ruby](rb/README.md)
+- [Lua](lua/README.md)
 
-- [Golang SDK](go/README.md)
-- [Go CLI SDK](go-cli/README.md)
-- [Go MCP server SDK](go-mcp/README.md)
-- [Lua SDK](lua/README.md)
-- [PHP SDK](php/README.md)
-- [Python SDK](py/README.md)
-- [Ruby SDK](rb/README.md)
-- [TypeScript SDK](ts/README.md)
+## Using the Chuck Norris Jokes API
 
+- Upstream: [https://api.chucknorris.io](https://api.chucknorris.io)
+
+- Free to use service with no stated rate limits or authentication requirements
+- Not officially affiliated with or endorsed by Chuck Norris
+- Hosted via Jugendstil.io; jokes are community/hand-curated
+- No explicit licence terms published for the joke corpus
+
+---
+
+Generated from the Chuck Norris Jokes API OpenAPI spec by [@voxgig/sdkgen](https://github.com/voxgig/sdkgen).

@@ -113,7 +113,6 @@ function basicSetup(extra?: any) {
     'CHUCK_NORRIS_JOKES_TEST_SEARCH_ENTID': idmap,
     'CHUCK_NORRIS_JOKES_TEST_LIVE': 'FALSE',
     'CHUCK_NORRIS_JOKES_TEST_EXPLAIN': 'FALSE',
-    'CHUCK_NORRIS_JOKES_APIKEY': 'NONE',
   })
 
   idmap = env['CHUCK_NORRIS_JOKES_TEST_SEARCH_ENTID']
@@ -123,7 +122,6 @@ function basicSetup(extra?: any) {
   if (live) {
     client = new ChuckNorrisJokesSDK(merge([
       {
-        apikey: env.CHUCK_NORRIS_JOKES_APIKEY,
       },
       extra
     ]))

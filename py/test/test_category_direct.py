@@ -61,14 +61,12 @@ def _category_direct_setup(mockres):
     env = runner.env_override({
         "CHUCKNORRISJOKES_TEST_CATEGORY_ENTID": {},
         "CHUCKNORRISJOKES_TEST_LIVE": "FALSE",
-        "CHUCKNORRISJOKES_APIKEY": "NONE",
     })
 
     live = env.get("CHUCKNORRISJOKES_TEST_LIVE") == "TRUE"
 
     if live:
         merged_opts = {
-            "apikey": env.get("CHUCKNORRISJOKES_APIKEY"),
         }
         client = ChuckNorrisJokesSDK(merged_opts)
         return {

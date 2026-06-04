@@ -23,12 +23,9 @@ loading a specific record.
 ### 1. Create a client
 
 ```python
-import os
 from chucknorrisjokes_sdk import ChuckNorrisJokesSDK
 
-client = ChuckNorrisJokesSDK({
-    "apikey": os.environ.get("CHUCK-NORRIS-JOKES_APIKEY"),
-})
+client = ChuckNorrisJokesSDK({})
 ```
 
 ### 2. List categorys
@@ -121,7 +118,6 @@ Create a `.env.local` file at the project root:
 
 ```
 CHUCK-NORRIS-JOKES_TEST_LIVE=TRUE
-CHUCK-NORRIS-JOKES_APIKEY=<your-key>
 ```
 
 Then run:
@@ -145,7 +141,6 @@ Creates a new SDK client.
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `str` | API key for authentication. |
 | `base` | `str` | Base URL of the API server. |
 | `prefix` | `str` | URL path prefix prepended to all requests. |
 | `suffix` | `str` | URL path suffix appended to all requests. |
