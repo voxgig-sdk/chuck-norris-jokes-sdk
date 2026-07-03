@@ -1,21 +1,8 @@
 # ChuckNorrisJokes SDK
 
-Fetch hand-curated Chuck Norris facts as JSON, with categories and free-text search
+Chuck Norris Jokes API client, generated from the OpenAPI spec.
 
 > TypeScript, Python, PHP, Golang, Ruby, Lua SDKs, a CLI, an interactive REPL, and an MCP server for AI agents — all generated from one OpenAPI spec by [@voxgig/sdkgen](https://github.com/voxgig/sdkgen).
-
-## About Chuck Norris Jokes API
-
-The [Chuck Norris Jokes API](https://api.chucknorris.io) is a free JSON service that returns hand-curated Chuck Norris facts. It is an independent project (not affiliated with Chuck Norris himself) and also ships Slack and Facebook Messenger integrations.
-
-What you get from the API:
-
-- A random joke via `/jokes/random`, returned as a JSON object with `id`, `value`, `icon_url`, `url`, and `categories`
-- A list of available joke categories via `/jokes/categories`
-- A category-filtered random joke via `/jokes/random?category={name}`
-- Free-text search across the joke corpus via `/jokes/search?query={query}`
-
-No API key or authentication is required. Public documentation does not specify rate limits, and CORS support is not advertised, so browser-side use may need a proxy.
 
 ## Try it
 
@@ -49,29 +36,31 @@ gem install chuck-norris-jokes-sdk
 luarocks install chuck-norris-jokes-sdk
 ```
 
-## 30-second quickstart
+## Quickstart
 
 ### TypeScript
 
 ```ts
 import { ChuckNorrisJokesSDK } from 'chuck-norris-jokes'
 
-const client = new ChuckNorrisJokesSDK({})
+const client = new ChuckNorrisJokesSDK({
+  apikey: process.env.CHUCK-NORRIS-JOKES_APIKEY,
+})
 
 // List all categorys
 const categorys = await client.Category().list()
+console.log(categorys.data)
 ```
 
-See the [TypeScript README](ts/README.md) for the
-full guide, or scroll down for the same example in other languages.
+See the [TypeScript README](ts/README.md) for the full guide.
 
-## What's in the box
+## Surfaces
 
-| Surface | Use it for | Path |
-| --- | --- | --- |
-| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | App integration | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
-| **CLI** | Scripts, CI, ops, one-off API calls | `go-cli/` |
-| **MCP server** | AI agents (Claude, Cursor, Cline) | `go-mcp/` |
+| Surface | Path |
+| --- | --- |
+| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
+| **CLI** | `go-cli/` |
+| **MCP server** | `go-mcp/` |
 
 ## Use it from an AI agent (MCP)
 
@@ -101,9 +90,9 @@ The API exposes 3 entities:
 
 | Entity | Description | API path |
 | --- | --- | --- |
-| **Category** | The set of joke categories available in the corpus, listed via `GET /jokes/categories` and usable as the `category` query parameter on random-joke requests. | `/jokes/categories` |
-| **Joke** | A single Chuck Norris fact resource with fields like `id`, `value`, and `icon_url`; fetch one at random via `GET /jokes/random` (optionally filtered by `?category=`). | `/jokes/random` |
-| **Search** | Free-text lookup across the joke corpus via `GET /jokes/search?query={query}`, returning matching joke objects. | `/jokes/search` |
+| **Category** |  | `/jokes/categories` |
+| **Joke** |  | `/jokes/random` |
+| **Search** |  | `/jokes/search` |
 
 Each entity supports the following operations where available: **load**,
 **list**, **create**, **update**, and **remove**.
@@ -113,12 +102,16 @@ Each entity supports the following operations where available: **load**,
 ### Python
 
 ```python
+import os
 from chucknorrisjokes_sdk import ChuckNorrisJokesSDK
 
-client = ChuckNorrisJokesSDK({})
+client = ChuckNorrisJokesSDK({
+    "apikey": os.environ.get("CHUCK-NORRIS-JOKES_APIKEY"),
+})
 
 # List all categorys
-categorys, err = client.Category(None).list(None, None)
+categorys, err = client.Category().list()
+print(categorys)
 ```
 
 ### PHP
@@ -127,10 +120,13 @@ categorys, err = client.Category(None).list(None, None)
 <?php
 require_once 'chucknorrisjokes_sdk.php';
 
-$client = new ChuckNorrisJokesSDK([]);
+$client = new ChuckNorrisJokesSDK([
+    "apikey" => getenv("CHUCK-NORRIS-JOKES_APIKEY"),
+]);
 
 // List all categorys
-[$categorys, $err] = $client->Category(null)->list(null, null);
+[$categorys, $err] = $client->Category()->list();
+print_r($categorys);
 ```
 
 ### Golang
@@ -138,10 +134,13 @@ $client = new ChuckNorrisJokesSDK([]);
 ```go
 import sdk "github.com/voxgig-sdk/chuck-norris-jokes-sdk/go"
 
-client := sdk.NewChuckNorrisJokesSDK(map[string]any{})
+client := sdk.NewChuckNorrisJokesSDK(map[string]any{
+    "apikey": os.Getenv("CHUCK-NORRIS-JOKES_APIKEY"),
+})
 
 // List all categorys
 categorys, err := client.Category(nil).List(nil, nil)
+fmt.Println(categorys)
 ```
 
 ### Ruby
@@ -149,10 +148,13 @@ categorys, err := client.Category(nil).List(nil, nil)
 ```ruby
 require_relative "ChuckNorrisJokes_sdk"
 
-client = ChuckNorrisJokesSDK.new({})
+client = ChuckNorrisJokesSDK.new({
+  "apikey" => ENV["CHUCK-NORRIS-JOKES_APIKEY"],
+})
 
 # List all categorys
-categorys, err = client.Category(nil).list(nil, nil)
+categorys, err = client.Category().list
+puts categorys
 ```
 
 ### Lua
@@ -160,10 +162,13 @@ categorys, err = client.Category(nil).list(nil, nil)
 ```lua
 local sdk = require("chuck-norris-jokes_sdk")
 
-local client = sdk.new({})
+local client = sdk.new({
+  apikey = os.getenv("CHUCK-NORRIS-JOKES_APIKEY"),
+})
 
 -- List all categorys
-local categorys, err = client:Category(nil):list(nil, nil)
+local categorys, err = client:Category():list()
+print(categorys)
 ```
 
 ## Unit testing in offline mode
@@ -182,25 +187,21 @@ const result = await client.Category().load({ id: 'test01' })
 ### Python
 
 ```python
-client = ChuckNorrisJokesSDK.test(None, None)
-result, err = client.Category(None).load(
-    {"id": "test01"}, None
-)
+client = ChuckNorrisJokesSDK.test()
+result, err = client.Category().load({"id": "test01"})
 ```
 
 ### PHP
 
 ```php
-$client = ChuckNorrisJokesSDK::test(null, null);
-[$result, $err] = $client->Category(null)->load(
-    ["id" => "test01"], null
-);
+$client = ChuckNorrisJokesSDK::test();
+[$result, $err] = $client->Category()->load(["id" => "test01"]);
 ```
 
 ### Golang
 
 ```go
-client := sdk.TestSDK(nil, nil)
+client := sdk.Test()
 result, err := client.Category(nil).Load(
     map[string]any{"id": "test01"}, nil,
 )
@@ -209,19 +210,15 @@ result, err := client.Category(nil).Load(
 ### Ruby
 
 ```ruby
-client = ChuckNorrisJokesSDK.test(nil, nil)
-result, err = client.Category(nil).load(
-  { "id" => "test01" }, nil
-)
+client = ChuckNorrisJokesSDK.test
+result, err = client.Category().load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
-local client = sdk.test(nil, nil)
-local result, err = client:Category(nil):load(
-  { id = "test01" }, nil
-)
+local client = sdk.test()
+local result, err = client:Category():load({ id = "test01" })
 ```
 
 ## How it works
@@ -325,15 +322,6 @@ local result, err = client:direct({
 - [Golang](go/README.md)
 - [Ruby](rb/README.md)
 - [Lua](lua/README.md)
-
-## Using the Chuck Norris Jokes API
-
-- Upstream: [https://api.chucknorris.io](https://api.chucknorris.io)
-
-- Free to use service with no stated rate limits or authentication requirements
-- Not officially affiliated with or endorsed by Chuck Norris
-- Hosted via Jugendstil.io; jokes are community/hand-curated
-- No explicit licence terms published for the joke corpus
 
 ---
 
