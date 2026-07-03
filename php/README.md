@@ -10,7 +10,7 @@ The PHP SDK for the ChuckNorrisJokes API — an entity-oriented client using PHP
 
 ## Install
 ```bash
-composer require voxgig/chuck-norris-jokes-sdk
+composer require voxgig-sdk/chuck-norris-jokes
 ```
 
 

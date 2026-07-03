@@ -10,7 +10,7 @@ The TypeScript SDK for the ChuckNorrisJokes API — a type-safe, entity-oriented
 
 ## Install
 ```bash
-npm install chuck-norris-jokes
+npm install @voxgig-sdk/chuck-norris-jokes
 ```
 ## Tutorial: your first API call
 

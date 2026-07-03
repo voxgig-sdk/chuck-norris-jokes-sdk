@@ -10,13 +10,13 @@ The Ruby SDK for the ChuckNorrisJokes API — an entity-oriented client using id
 
 ## Install
 ```bash
-gem install chuck-norris-jokes-sdk
+gem install voxgig-sdk-chuck-norris-jokes
 ```
 
 Or add to your `Gemfile`:
 
 ```ruby
-gem "chuck-norris-jokes-sdk"
+gem "voxgig-sdk-chuck-norris-jokes"
 ```
 
 Then run:

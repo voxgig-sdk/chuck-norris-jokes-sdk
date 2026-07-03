@@ -1,7 +1,23 @@
 {
   "name": "@voxgig-sdk/chuck-norris-jokes",
   "version": "0.0.1",
-  "description": "DESCRIPTION",
+  "description": "Unofficial generated TypeScript SDK for the Chuck Norris Jokes public API. Not affiliated with or endorsed by the upstream API provider.",
+  "keywords": [
+    "voxgig",
+    "sdk",
+    "generated-sdk",
+    "openapi",
+    "api-client",
+    "chuck-norris-jokes"
+  ],
+  "homepage": "https://github.com/voxgig-sdk/chuck-norris-jokes-sdk#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/voxgig-sdk/chuck-norris-jokes-sdk.git"
+  },
+  "bugs": {
+    "url": "https://github.com/voxgig-sdk/chuck-norris-jokes-sdk/issues"
+  },
   "main": "dist/ChuckNorrisJokesSDK.js",
   "type": "commonjs",
   "types": "dist/ChuckNorrisJokesSDK.d.ts",
@@ -14,7 +30,10 @@
     "clean": "rm -rf node_modules yarn.lock package-lock.json",
     "reset": "npm run clean && npm i && npm run build && npm test"
   },
-  "author": "ChuckNorrisJokes",
+  "author": {
+    "name": "Voxgig",
+    "url": "https://voxgig.com"
+  },
   "license": "MIT",
   "dependencies": {},
   "peerDependencies": {},

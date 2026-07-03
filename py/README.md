@@ -10,7 +10,7 @@ The Python SDK for the ChuckNorrisJokes API — an entity-oriented client follow
 
 ## Install
 ```bash
-pip install chuck-norris-jokes-sdk
+pip install voxgig-sdk-chuck-norris-jokes
 ```
 
 Or install from source:
