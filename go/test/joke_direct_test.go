@@ -93,14 +93,12 @@ func jokeDirectSetup(mockres any) *jokeDirectSetupResult {
 	env := envOverride(map[string]any{
 		"CHUCKNORRISJOKES_TEST_JOKE_ENTID": map[string]any{},
 		"CHUCKNORRISJOKES_TEST_LIVE":    "FALSE",
-		"CHUCKNORRISJOKES_APIKEY":       "NONE",
 	})
 
 	live := env["CHUCKNORRISJOKES_TEST_LIVE"] == "TRUE"
 
 	if live {
 		mergedOpts := map[string]any{
-			"apikey": env["CHUCKNORRISJOKES_APIKEY"],
 		}
 		client := sdk.NewChuckNorrisJokesSDK(mergedOpts)
 

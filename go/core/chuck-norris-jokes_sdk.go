@@ -245,16 +245,25 @@ func (sdk *ChuckNorrisJokesSDK) Direct(fetchargs map[string]any) (map[string]any
 }
 
 
+// Category returns a Category entity bound to this client.
+// Idiomatic usage: client.Category(nil).List(nil, nil) or
+// client.Category(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *ChuckNorrisJokesSDK) Category(data map[string]any) ChuckNorrisJokesEntity {
 	return NewCategoryEntityFunc(sdk, data)
 }
 
 
+// Joke returns a Joke entity bound to this client.
+// Idiomatic usage: client.Joke(nil).List(nil, nil) or
+// client.Joke(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *ChuckNorrisJokesSDK) Joke(data map[string]any) ChuckNorrisJokesEntity {
 	return NewJokeEntityFunc(sdk, data)
 }
 
 
+// Search returns a Search entity bound to this client.
+// Idiomatic usage: client.Search(nil).List(nil, nil) or
+// client.Search(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *ChuckNorrisJokesSDK) Search(data map[string]any) ChuckNorrisJokesEntity {
 	return NewSearchEntityFunc(sdk, data)
 }

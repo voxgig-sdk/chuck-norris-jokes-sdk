@@ -9,9 +9,12 @@ The TypeScript SDK for the ChuckNorrisJokes API — a type-safe, entity-oriented
 
 
 ## Install
-```bash
-npm install @voxgig-sdk/chuck-norris-jokes
-```
+This package is not yet published to npm. Install it from the GitHub
+release tag (`ts/vX.Y.Z`):
+
+- Releases: [https://github.com/voxgig-sdk/chuck-norris-jokes-sdk/releases](https://github.com/voxgig-sdk/chuck-norris-jokes-sdk/releases)
+
+
 ## Tutorial: your first API call
 
 This tutorial walks through creating a client, listing entities, and
@@ -20,17 +23,15 @@ loading a specific record.
 ### 1. Create a client
 
 ```ts
-import { ChuckNorrisJokesSDK } from 'chuck-norris-jokes'
+import { ChuckNorrisJokesSDK } from '@voxgig-sdk/chuck-norris-jokes'
 
-const client = new ChuckNorrisJokesSDK({
-  apikey: process.env.CHUCK-NORRIS-JOKES_APIKEY,
-})
+const client = new ChuckNorrisJokesSDK()
 ```
 
 ### 2. List categorys
 
 ```ts
-const result = await client.Category().list()
+const result = await client.category.list()
 
 if (result.ok) {
   for (const item of result.data) {
@@ -81,7 +82,7 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = ChuckNorrisJokesSDK.test()
 
-const result = await client.Planet().load({ id: 'test01' })
+const result = await client.category.load({ id: 'test01' })
 // result.ok === true
 // result.data contains mock response data
 ```
@@ -89,7 +90,7 @@ const result = await client.Planet().load({ id: 'test01' })
 You can also use the instance method:
 
 ```ts
-const client = new ChuckNorrisJokesSDK({ apikey: '...' })
+const client = new ChuckNorrisJokesSDK()
 const testClient = client.tester()
 ```
 
@@ -98,7 +99,7 @@ const testClient = client.tester()
 Entity instances remember their last match and data:
 
 ```ts
-const entity = client.Planet()
+const entity = client.category
 
 // First call sets internal match
 await entity.load({ id: 'example' })
@@ -125,7 +126,6 @@ const logger = {
 }
 
 const client = new ChuckNorrisJokesSDK({
-  apikey: '...',
   extend: [logger],
 })
 ```
@@ -135,8 +135,7 @@ const client = new ChuckNorrisJokesSDK({
 Create a `.env.local` file at the project root:
 
 ```
-CHUCK-NORRIS-JOKES_TEST_LIVE=TRUE
-CHUCK-NORRIS-JOKES_APIKEY=<your-key>
+CHUCK_NORRIS_JOKES_TEST_LIVE=TRUE
 ```
 
 Then run:
@@ -154,7 +153,6 @@ cd ts && npm test
 
 ```ts
 new ChuckNorrisJokesSDK(options?: {
-  apikey?: string
   base?: string
   prefix?: string
   suffix?: string
@@ -165,7 +163,6 @@ new ChuckNorrisJokesSDK(options?: {
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `string` | API key for authentication. |
 | `base` | `string` | Base URL of the API server. |
 | `prefix` | `string` | URL path prefix prepended to all requests. |
 | `suffix` | `string` | URL path suffix appended to all requests. |
@@ -297,7 +294,7 @@ API path: `/jokes/search`
 
 ### Category
 
-Create an instance: `const category = client.Category()`
+Create an instance: `const category = client.category`
 
 #### Operations
 
@@ -308,13 +305,13 @@ Create an instance: `const category = client.Category()`
 #### Example: List
 
 ```ts
-const categorys = await client.Category().list()
+const categorys = await client.category.list()
 ```
 
 
 ### Joke
 
-Create an instance: `const joke = client.Joke()`
+Create an instance: `const joke = client.joke`
 
 #### Operations
 
@@ -335,13 +332,13 @@ Create an instance: `const joke = client.Joke()`
 #### Example: List
 
 ```ts
-const jokes = await client.Joke().list()
+const jokes = await client.joke.list()
 ```
 
 
 ### Search
 
-Create an instance: `const search = client.Search()`
+Create an instance: `const search = client.search`
 
 #### Operations
 
@@ -362,7 +359,7 @@ Create an instance: `const search = client.Search()`
 #### Example: List
 
 ```ts
-const searchs = await client.Search().list()
+const searchs = await client.search.list()
 ```
 
 
@@ -423,7 +420,7 @@ chuck-norris-jokes/
 Import the SDK from the package root:
 
 ```ts
-import { ChuckNorrisJokesSDK } from 'chuck-norris-jokes'
+import { ChuckNorrisJokesSDK } from '@voxgig-sdk/chuck-norris-jokes'
 ```
 
 ### Entity state
@@ -433,11 +430,11 @@ stores the returned data and match criteria internally. Subsequent
 calls on the same instance can rely on this state.
 
 ```ts
-const moon = client.Moon()
-await moon.load({ planet_id: 'earth', id: 'luna' })
+const category = client.category
+await category.load({ id: "example_id" })
 
-// moon.data() now returns the loaded moon data
-// moon.match() returns { planet_id: 'earth', id: 'luna' }
+// category.data() now returns the loaded category data
+// category.match() returns { id: "example_id" }
 ```
 
 Call `make()` to create a fresh instance with the same configuration

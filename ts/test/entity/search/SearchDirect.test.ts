@@ -82,14 +82,12 @@ function directSetup(mockres?: any) {
   const env = envOverride({
     'CHUCKNORRISJOKES_TEST_SEARCH_ENTID': {},
     'CHUCKNORRISJOKES_TEST_LIVE': 'FALSE',
-    'CHUCKNORRISJOKES_APIKEY': 'NONE',
   })
 
   const live = 'TRUE' === env.CHUCKNORRISJOKES_TEST_LIVE
 
   if (live) {
     const client = new ChuckNorrisJokesSDK({
-      apikey: env.CHUCKNORRISJOKES_APIKEY,
     })
 
     let idmap: any = env['CHUCKNORRISJOKES_TEST_SEARCH_ENTID']

@@ -15,9 +15,6 @@ module ChuckNorrisJokesConfig
       },
       "options" => {
         "base" => "https://api.chucknorris.io",
-        "auth" => {
-          "prefix" => "Bearer",
-        },
         "headers" => {
           "content-type" => "application/json",
         },

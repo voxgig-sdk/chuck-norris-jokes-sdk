@@ -1,0 +1,33 @@
+-- Typed models for the ChuckNorrisJokes SDK (LuaLS annotations).
+--
+-- GENERATED from the API model: main.kit.entity.<e>.fields[] and per-op
+-- params (op.<name>.points[].args.params[]). Field/param types come from the
+-- canonical type sentinels via @voxgig/sdkgen canonToType (source of truth:
+-- @voxgig/apidef VALID_CANON). Annotations only — no runtime effect. Do not
+-- edit by hand.
+
+---@class Category
+
+---@class CategoryListMatch
+
+---@class Joke
+---@field category? table
+---@field icon_url string
+---@field id string
+---@field url string
+---@field value string
+
+---@class JokeListMatch
+
+---@class Search
+---@field category? table
+---@field icon_url string
+---@field id string
+---@field url string
+---@field value string
+
+---@class SearchListMatch
+
+local M = {}
+
+return M

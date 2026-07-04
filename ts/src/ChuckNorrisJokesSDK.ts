@@ -4,6 +4,8 @@ import { CategoryEntity } from './entity/CategoryEntity'
 import { JokeEntity } from './entity/JokeEntity'
 import { SearchEntity } from './entity/SearchEntity'
 
+export type * from './ChuckNorrisJokesTypes'
+
 
 import { inspect } from 'node:util'
 
@@ -204,18 +206,42 @@ class ChuckNorrisJokesSDK {
 
 
 
+  _category?: CategoryEntity
+
+  // Idiomatic facade: `client.category.list()` / `client.category.load({ id })`.
+  get category(): CategoryEntity {
+    return (this._category ??= new CategoryEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.category` instead. */
   Category(data?: any) {
     const self = this
     return new CategoryEntity(self,data)
   }
 
 
+  _joke?: JokeEntity
+
+  // Idiomatic facade: `client.joke.list()` / `client.joke.load({ id })`.
+  get joke(): JokeEntity {
+    return (this._joke ??= new JokeEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.joke` instead. */
   Joke(data?: any) {
     const self = this
     return new JokeEntity(self,data)
   }
 
 
+  _search?: SearchEntity
+
+  // Idiomatic facade: `client.search.list()` / `client.search.load({ id })`.
+  get search(): SearchEntity {
+    return (this._search ??= new SearchEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.search` instead. */
   Search(data?: any) {
     const self = this
     return new SearchEntity(self,data)

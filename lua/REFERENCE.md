@@ -19,7 +19,6 @@ Create a new SDK client instance.
 | Name | Type | Description |
 | --- | --- | --- |
 | `options` | `table` | SDK configuration options. |
-| `options.apikey` | `string` | API key for authentication. |
 | `options.base` | `string` | Base URL for API requests. |
 | `options.prefix` | `string` | URL prefix appended after base. |
 | `options.suffix` | `string` | URL suffix appended after path. |
@@ -92,7 +91,7 @@ same parameters as `direct()`.
 ## CategoryEntity
 
 ```lua
-local category = client:Category(nil)
+local category = client:category(nil)
 ```
 
 ### Operations
@@ -102,7 +101,7 @@ local category = client:Category(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:Category():list()
+local results, err = client:category():list()
 ```
 
 ### Common Methods
@@ -138,7 +137,7 @@ Return the entity name.
 ## JokeEntity
 
 ```lua
-local joke = client:Joke(nil)
+local joke = client:joke(nil)
 ```
 
 ### Fields
@@ -158,7 +157,7 @@ local joke = client:Joke(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:Joke():list()
+local results, err = client:joke():list()
 ```
 
 ### Common Methods
@@ -194,7 +193,7 @@ Return the entity name.
 ## SearchEntity
 
 ```lua
-local search = client:Search(nil)
+local search = client:search(nil)
 ```
 
 ### Fields
@@ -214,7 +213,7 @@ local search = client:Search(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:Search():list()
+local results, err = client:search():list()
 ```
 
 ### Common Methods

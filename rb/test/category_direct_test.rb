@@ -19,7 +19,7 @@ class CategoryDirectTest < Minitest::Test
     client = setup[:client]
 
 
-    result, err = client.direct({
+    result = client.direct({
       "path" => "jokes/categories",
       "method" => "GET",
       "params" => {},
@@ -28,8 +28,8 @@ class CategoryDirectTest < Minitest::Test
       # Live mode is lenient: synthetic IDs frequently 4xx and the list-
       # response shape varies wildly across public APIs. Skip rather than
       # fail when the call doesn't return a usable list.
-      if !err.nil?
-        skip("list call failed (likely synthetic IDs against live API): #{err}")
+      if !result["err"].nil?
+        skip("list call failed (likely synthetic IDs against live API): #{result["err"]}")
         return
       end
       unless result["ok"]
@@ -42,7 +42,7 @@ class CategoryDirectTest < Minitest::Test
         return
       end
     else
-      assert_nil err
+      assert_nil result["err"]
       assert result["ok"]
       assert_equal 200, Helpers.to_int(result["status"])
       assert result["data"].is_a?(Array)
@@ -62,14 +62,12 @@ def category_direct_setup(mockres)
   env = Runner.env_override({
     "CHUCKNORRISJOKES_TEST_CATEGORY_ENTID" => {},
     "CHUCKNORRISJOKES_TEST_LIVE" => "FALSE",
-    "CHUCKNORRISJOKES_APIKEY" => "NONE",
   })
 
   live = env["CHUCKNORRISJOKES_TEST_LIVE"] == "TRUE"
 
   if live
     merged_opts = {
-      "apikey" => env["CHUCKNORRISJOKES_APIKEY"],
     }
     client = ChuckNorrisJokesSDK.new(merged_opts)
     return {

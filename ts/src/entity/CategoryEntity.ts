@@ -14,9 +14,13 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  Category,
+  CategoryListMatch,
+} from '../ChuckNorrisJokesTypes'
 
 // TODO: needs Entity superclass
-class CategoryEntity extends ChuckNorrisJokesEntityBase {
+class CategoryEntity extends ChuckNorrisJokesEntityBase<Category> {
 
   constructor(client: ChuckNorrisJokesSDK, entopts: any) {
     super(client, entopts)
@@ -33,7 +37,7 @@ class CategoryEntity extends ChuckNorrisJokesEntityBase {
 
 
 
-  async list(this: any, reqmatch?: any, ctrl?: Control) {
+  async list(this: any, reqmatch?: CategoryListMatch, ctrl?: Control): Promise<Category[]> {
 
     const utility = this._utility
 
@@ -133,7 +137,9 @@ class CategoryEntity extends ChuckNorrisJokesEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<Category[]> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }

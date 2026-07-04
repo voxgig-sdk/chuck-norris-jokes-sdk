@@ -244,18 +244,57 @@ end
 
 
 
+-- Idiomatic facade: client:category():list() / client:category():load({ id = ... })
+function ChuckNorrisJokesSDK:category(data)
+  local EntityMod = require("entity.category_entity")
+  if data == nil then
+    if self._category == nil then
+      self._category = EntityMod.new(self, nil)
+    end
+    return self._category
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:category() instead.
 function ChuckNorrisJokesSDK:Category(data)
   local EntityMod = require("entity.category_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:joke():list() / client:joke():load({ id = ... })
+function ChuckNorrisJokesSDK:joke(data)
+  local EntityMod = require("entity.joke_entity")
+  if data == nil then
+    if self._joke == nil then
+      self._joke = EntityMod.new(self, nil)
+    end
+    return self._joke
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:joke() instead.
 function ChuckNorrisJokesSDK:Joke(data)
   local EntityMod = require("entity.joke_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:search():list() / client:search():load({ id = ... })
+function ChuckNorrisJokesSDK:search(data)
+  local EntityMod = require("entity.search_entity")
+  if data == nil then
+    if self._search == nil then
+      self._search = EntityMod.new(self, nil)
+    end
+    return self._search
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:search() instead.
 function ChuckNorrisJokesSDK:Search(data)
   local EntityMod = require("entity.search_entity")
   return EntityMod.new(self, data)
