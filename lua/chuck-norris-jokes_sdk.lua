@@ -244,8 +244,9 @@ end
 
 
 
--- Idiomatic facade: client:category():list() / client:category():load({ id = ... })
-function ChuckNorrisJokesSDK:category(data)
+-- Idiomatic facade: client:Category():list() / client:Category():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ChuckNorrisJokesSDK:Category(data)
   local EntityMod = require("entity.category_entity")
   if data == nil then
     if self._category == nil then
@@ -256,15 +257,10 @@ function ChuckNorrisJokesSDK:category(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:category() instead.
-function ChuckNorrisJokesSDK:Category(data)
-  local EntityMod = require("entity.category_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:joke():list() / client:joke():load({ id = ... })
-function ChuckNorrisJokesSDK:joke(data)
+-- Idiomatic facade: client:Joke():list() / client:Joke():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ChuckNorrisJokesSDK:Joke(data)
   local EntityMod = require("entity.joke_entity")
   if data == nil then
     if self._joke == nil then
@@ -275,15 +271,10 @@ function ChuckNorrisJokesSDK:joke(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:joke() instead.
-function ChuckNorrisJokesSDK:Joke(data)
-  local EntityMod = require("entity.joke_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:search():list() / client:search():load({ id = ... })
-function ChuckNorrisJokesSDK:search(data)
+-- Idiomatic facade: client:Search():list() / client:Search():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ChuckNorrisJokesSDK:Search(data)
   local EntityMod = require("entity.search_entity")
   if data == nil then
     if self._search == nil then
@@ -291,12 +282,6 @@ function ChuckNorrisJokesSDK:search(data)
     end
     return self._search
   end
-  return EntityMod.new(self, data)
-end
-
--- Deprecated: use client:search() instead.
-function ChuckNorrisJokesSDK:Search(data)
-  local EntityMod = require("entity.search_entity")
   return EntityMod.new(self, data)
 end
 

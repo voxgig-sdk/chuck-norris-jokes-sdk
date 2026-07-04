@@ -208,39 +208,21 @@ class ChuckNorrisJokesSDK
   end
 
 
-  # Idiomatic facade: client.category.list / client.category.load({ "id" => ... })
-  def category
-    require_relative 'entity/category_entity'
-    @category ||= CategoryEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.category instead.
+  # Canonical facade: client.Category.list / client.Category.load({ "id" => ... })
   def Category(data = nil)
     require_relative 'entity/category_entity'
     CategoryEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.joke.list / client.joke.load({ "id" => ... })
-  def joke
-    require_relative 'entity/joke_entity'
-    @joke ||= JokeEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.joke instead.
+  # Canonical facade: client.Joke.list / client.Joke.load({ "id" => ... })
   def Joke(data = nil)
     require_relative 'entity/joke_entity'
     JokeEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.search.list / client.search.load({ "id" => ... })
-  def search
-    require_relative 'entity/search_entity'
-    @search ||= SearchEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.search instead.
+  # Canonical facade: client.Search.list / client.Search.load({ "id" => ... })
   def Search(data = nil)
     require_relative 'entity/search_entity'
     SearchEntity.new(self, data)

@@ -220,57 +220,27 @@ class ChuckNorrisJokesSDK:
         }
 
 
-    @property
-    def category(self):
-        """Idiomatic facade: client.category.list() / client.category.load({"id": ...})."""
-        from entity.category_entity import CategoryEntity
-        cached = getattr(self, "_category", None)
-        if cached is None:
-            cached = CategoryEntity(self, None)
-            self._category = cached
-        return cached
-
-    def Category(self, data=None):
-        # Deprecated: use client.category instead.
+    def Category(self, data=None) -> "CategoryEntity":
+        """Entity factory: client.Category().list({}) / client.Category().load({"id": ...})."""
         from entity.category_entity import CategoryEntity
         return CategoryEntity(self, data)
 
 
-    @property
-    def joke(self):
-        """Idiomatic facade: client.joke.list() / client.joke.load({"id": ...})."""
-        from entity.joke_entity import JokeEntity
-        cached = getattr(self, "_joke", None)
-        if cached is None:
-            cached = JokeEntity(self, None)
-            self._joke = cached
-        return cached
-
-    def Joke(self, data=None):
-        # Deprecated: use client.joke instead.
+    def Joke(self, data=None) -> "JokeEntity":
+        """Entity factory: client.Joke().list({}) / client.Joke().load({"id": ...})."""
         from entity.joke_entity import JokeEntity
         return JokeEntity(self, data)
 
 
-    @property
-    def search(self):
-        """Idiomatic facade: client.search.list() / client.search.load({"id": ...})."""
-        from entity.search_entity import SearchEntity
-        cached = getattr(self, "_search", None)
-        if cached is None:
-            cached = SearchEntity(self, None)
-            self._search = cached
-        return cached
-
-    def Search(self, data=None):
-        # Deprecated: use client.search instead.
+    def Search(self, data=None) -> "SearchEntity":
+        """Entity factory: client.Search().list({}) / client.Search().load({"id": ...})."""
         from entity.search_entity import SearchEntity
         return SearchEntity(self, data)
 
 
 
     @classmethod
-    def test(cls, testopts=None, sdkopts=None):
+    def test(cls, testopts=None, sdkopts=None) -> "ChuckNorrisJokesSDK":
         if sdkopts is None:
             sdkopts = {}
         sdkopts = vs.clone(sdkopts)
@@ -290,3 +260,11 @@ class ChuckNorrisJokesSDK:
         sdk.mode = "test"
 
         return sdk
+
+
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from entity.category_entity import CategoryEntity
+    from entity.joke_entity import JokeEntity
+    from entity.search_entity import SearchEntity

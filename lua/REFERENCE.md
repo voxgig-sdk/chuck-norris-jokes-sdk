@@ -91,7 +91,7 @@ same parameters as `direct()`.
 ## CategoryEntity
 
 ```lua
-local category = client:category(nil)
+local category = client:Category(nil)
 ```
 
 ### Operations
@@ -101,7 +101,7 @@ local category = client:category(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:category():list()
+local results, err = client:Category():list()
 ```
 
 ### Common Methods
@@ -137,7 +137,7 @@ Return the entity name.
 ## JokeEntity
 
 ```lua
-local joke = client:joke(nil)
+local joke = client:Joke(nil)
 ```
 
 ### Fields
@@ -157,7 +157,7 @@ local joke = client:joke(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:joke():list()
+local results, err = client:Joke():list()
 ```
 
 ### Common Methods
@@ -193,7 +193,7 @@ Return the entity name.
 ## SearchEntity
 
 ```lua
-local search = client:search(nil)
+local search = client:Search(nil)
 ```
 
 ### Fields
@@ -213,7 +213,7 @@ local search = client:search(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:search():list()
+local results, err = client:Search():list()
 ```
 
 ### Common Methods

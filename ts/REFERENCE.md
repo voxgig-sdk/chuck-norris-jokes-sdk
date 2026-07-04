@@ -133,7 +133,7 @@ Alias for `ChuckNorrisJokesSDK.test()`.
 ## CategoryEntity
 
 ```ts
-const category = client.category
+const category = client.Category()
 ```
 
 ### Operations
@@ -143,7 +143,7 @@ const category = client.category
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.category.list()
+const results = await client.Category().list()
 ```
 
 ### Common Methods
@@ -177,7 +177,7 @@ Return a copy of the entity options.
 ## JokeEntity
 
 ```ts
-const joke = client.joke
+const joke = client.Joke()
 ```
 
 ### Fields
@@ -197,7 +197,7 @@ const joke = client.joke
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.joke.list()
+const results = await client.Joke().list()
 ```
 
 ### Common Methods
@@ -231,7 +231,7 @@ Return a copy of the entity options.
 ## SearchEntity
 
 ```ts
-const search = client.search
+const search = client.Search()
 ```
 
 ### Fields
@@ -251,7 +251,7 @@ const search = client.search
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.search.list()
+const results = await client.Search().list()
 ```
 
 ### Common Methods

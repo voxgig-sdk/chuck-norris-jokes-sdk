@@ -4,55 +4,59 @@
 # params (op.<name>.points[].args.params[]). Field/param types come from the
 # canonical type sentinels via @voxgig/sdkgen canonToType (source of truth:
 # @voxgig/apidef VALID_CANON). Do not edit by hand.
+#
+# These are TypedDicts, not dataclasses: the SDK ops return/accept plain dicts
+# at runtime, and a TypedDict IS a dict shape, so the types match the runtime.
+# Optional (req:false) keys are modelled as TypedDict key-optionality
+# (total=False), split into a required base + total=False subclass when a type
+# has both required and optional keys.
 
 from __future__ import annotations
 
-from dataclasses import dataclass
-from typing import Optional, Any
+from typing import TypedDict, Any
 
 
-@dataclass
-class Category:
+class Category(TypedDict):
     pass
 
 
-@dataclass
-class CategoryListMatch:
+class CategoryListMatch(TypedDict):
     pass
 
 
-@dataclass
-class Joke:
+class JokeRequired(TypedDict):
     icon_url: str
     id: str
     url: str
     value: str
-    category: Optional[list] = None
 
 
-@dataclass
-class JokeListMatch:
-    category: Optional[list] = None
-    icon_url: Optional[str] = None
-    id: Optional[str] = None
-    url: Optional[str] = None
-    value: Optional[str] = None
+class Joke(JokeRequired, total=False):
+    category: list
 
 
-@dataclass
-class Search:
+class JokeListMatch(TypedDict, total=False):
+    category: list
     icon_url: str
     id: str
     url: str
     value: str
-    category: Optional[list] = None
 
 
-@dataclass
-class SearchListMatch:
-    category: Optional[list] = None
-    icon_url: Optional[str] = None
-    id: Optional[str] = None
-    url: Optional[str] = None
-    value: Optional[str] = None
+class SearchRequired(TypedDict):
+    icon_url: str
+    id: str
+    url: str
+    value: str
 
+
+class Search(SearchRequired, total=False):
+    category: list
+
+
+class SearchListMatch(TypedDict, total=False):
+    category: list
+    icon_url: str
+    id: str
+    url: str
+    value: str

@@ -206,42 +206,21 @@ class ChuckNorrisJokesSDK {
 
 
 
-  _category?: CategoryEntity
-
-  // Idiomatic facade: `client.category.list()` / `client.category.load({ id })`.
-  get category(): CategoryEntity {
-    return (this._category ??= new CategoryEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.category` instead. */
+  // Entity access: `client.Category().list()` / `client.Category().load({ id })`.
   Category(data?: any) {
     const self = this
     return new CategoryEntity(self,data)
   }
 
 
-  _joke?: JokeEntity
-
-  // Idiomatic facade: `client.joke.list()` / `client.joke.load({ id })`.
-  get joke(): JokeEntity {
-    return (this._joke ??= new JokeEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.joke` instead. */
+  // Entity access: `client.Joke().list()` / `client.Joke().load({ id })`.
   Joke(data?: any) {
     const self = this
     return new JokeEntity(self,data)
   }
 
 
-  _search?: SearchEntity
-
-  // Idiomatic facade: `client.search.list()` / `client.search.load({ id })`.
-  get search(): SearchEntity {
-    return (this._search ??= new SearchEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.search` instead. */
+  // Entity access: `client.Search().list()` / `client.Search().load({ id })`.
   Search(data?: any) {
     const self = this
     return new SearchEntity(self,data)
