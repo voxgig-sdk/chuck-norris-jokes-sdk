@@ -8,7 +8,8 @@
 export interface Category {
 }
 
-export type CategoryListMatch = Partial<Category>
+export interface CategoryListMatch {
+}
 
 export interface Joke {
   category?: any[]
@@ -18,7 +19,13 @@ export interface Joke {
   value: string
 }
 
-export type JokeListMatch = Partial<Joke>
+export interface JokeListMatch {
+  category?: any[]
+  icon_url?: string
+  id?: string
+  url?: string
+  value?: string
+}
 
 export interface Search {
   category?: any[]
@@ -28,5 +35,11 @@ export interface Search {
   value: string
 }
 
-export type SearchListMatch = Partial<Search>
+export interface SearchListMatch {
+  category?: any[]
+  icon_url?: string
+  id?: string
+  url?: string
+  value?: string
+}
 

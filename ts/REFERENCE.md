@@ -184,11 +184,11 @@ const joke = client.Joke()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `category` | ``$ARRAY`` | No |  |
-| `icon_url` | ``$STRING`` | Yes |  |
-| `id` | ``$STRING`` | Yes |  |
-| `url` | ``$STRING`` | Yes |  |
-| `value` | ``$STRING`` | Yes |  |
+| `category` | `any[]` | No |  |
+| `icon_url` | `string` | Yes |  |
+| `id` | `string` | Yes |  |
+| `url` | `string` | Yes |  |
+| `value` | `string` | Yes |  |
 
 ### Operations
 
@@ -238,11 +238,11 @@ const search = client.Search()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `category` | ``$ARRAY`` | No |  |
-| `icon_url` | ``$STRING`` | Yes |  |
-| `id` | ``$STRING`` | Yes |  |
-| `url` | ``$STRING`` | Yes |  |
-| `value` | ``$STRING`` | Yes |  |
+| `category` | `any[]` | No |  |
+| `icon_url` | `string` | Yes |  |
+| `id` | `string` | Yes |  |
+| `url` | `string` | Yes |  |
+| `value` | `string` | Yes |  |
 
 ### Operations
 

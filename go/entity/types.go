@@ -12,8 +12,7 @@ import "encoding/json"
 type Category struct {
 }
 
-// CategoryListMatch mirrors the category fields as an all-optional match
-// filter (Go analog of Partial<Category>).
+// CategoryListMatch is the typed request payload for Category.ListTyped.
 type CategoryListMatch struct {
 }
 
@@ -26,8 +25,7 @@ type Joke struct {
 	Value string `json:"value"`
 }
 
-// JokeListMatch mirrors the joke fields as an all-optional match
-// filter (Go analog of Partial<Joke>).
+// JokeListMatch is the typed request payload for Joke.ListTyped.
 type JokeListMatch struct {
 	Category *[]any `json:"category,omitempty"`
 	IconUrl *string `json:"icon_url,omitempty"`
@@ -45,8 +43,7 @@ type Search struct {
 	Value string `json:"value"`
 }
 
-// SearchListMatch mirrors the search fields as an all-optional match
-// filter (Go analog of Partial<Search>).
+// SearchListMatch is the typed request payload for Search.ListTyped.
 type SearchListMatch struct {
 	Category *[]any `json:"category,omitempty"`
 	IconUrl *string `json:"icon_url,omitempty"`

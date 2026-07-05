@@ -17,7 +17,7 @@ class Category
 {
 }
 
-/** Match filter for Category#list (any subset of Category fields). */
+/** Request payload for Category#list. */
 class CategoryListMatch
 {
 }
@@ -32,7 +32,7 @@ class Joke
     public string $value;
 }
 
-/** Match filter for Joke#list (any subset of Joke fields). */
+/** Request payload for Joke#list. */
 class JokeListMatch
 {
     public ?array $category = null;
@@ -52,7 +52,7 @@ class Search
     public string $value;
 }
 
-/** Match filter for Search#list (any subset of Search fields). */
+/** Request payload for Search#list. */
 class SearchListMatch
 {
     public ?array $category = null;

@@ -221,19 +221,19 @@ class ChuckNorrisJokesSDK:
 
 
     def Category(self, data=None) -> "CategoryEntity":
-        """Entity factory: client.Category().list({}) / client.Category().load({"id": ...})."""
+        """Entity factory: client.Category().list() / client.Category().load({"id": ...})."""
         from entity.category_entity import CategoryEntity
         return CategoryEntity(self, data)
 
 
     def Joke(self, data=None) -> "JokeEntity":
-        """Entity factory: client.Joke().list({}) / client.Joke().load({"id": ...})."""
+        """Entity factory: client.Joke().list() / client.Joke().load({"id": ...})."""
         from entity.joke_entity import JokeEntity
         return JokeEntity(self, data)
 
 
     def Search(self, data=None) -> "SearchEntity":
-        """Entity factory: client.Search().list({}) / client.Search().load({"id": ...})."""
+        """Entity factory: client.Search().list() / client.Search().load({"id": ...})."""
         from entity.search_entity import SearchEntity
         return SearchEntity(self, data)
 

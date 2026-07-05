@@ -8,7 +8,7 @@ Complete API reference for the ChuckNorrisJokes Python SDK.
 ### Constructor
 
 ```python
-from chuck-norris-jokes_sdk import ChuckNorrisJokesSDK
+from chucknorrisjokes_sdk import ChuckNorrisJokesSDK
 
 client = ChuckNorrisJokesSDK(options)
 ```
@@ -93,12 +93,12 @@ category = client.Category()
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Category().list({})
+results = client.Category().list()
 for category in results:
     print(category)
 ```
@@ -142,20 +142,20 @@ joke = client.Joke()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `category` | ``$ARRAY`` | No |  |
-| `icon_url` | ``$STRING`` | Yes |  |
-| `id` | ``$STRING`` | Yes |  |
-| `url` | ``$STRING`` | Yes |  |
-| `value` | ``$STRING`` | Yes |  |
+| `category` | `list` | No |  |
+| `icon_url` | `str` | Yes |  |
+| `id` | `str` | Yes |  |
+| `url` | `str` | Yes |  |
+| `value` | `str` | Yes |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Joke().list({})
+results = client.Joke().list()
 for joke in results:
     print(joke)
 ```
@@ -199,20 +199,20 @@ search = client.Search()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `category` | ``$ARRAY`` | No |  |
-| `icon_url` | ``$STRING`` | Yes |  |
-| `id` | ``$STRING`` | Yes |  |
-| `url` | ``$STRING`` | Yes |  |
-| `value` | ``$STRING`` | Yes |  |
+| `category` | `list` | No |  |
+| `icon_url` | `str` | Yes |  |
+| `id` | `str` | Yes |  |
+| `url` | `str` | Yes |  |
+| `value` | `str` | Yes |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Search().list({})
+results = client.Search().list()
 for search in results:
     print(search)
 ```

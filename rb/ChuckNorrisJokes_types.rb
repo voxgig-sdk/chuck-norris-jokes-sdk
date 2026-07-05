@@ -12,7 +12,7 @@
 class Category
 end
 
-# Match filter for Category#list (any subset of Category fields).
+# Request payload for Category#list.
 class CategoryListMatch
 end
 
@@ -41,7 +41,7 @@ Joke = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Joke#list (any subset of Joke fields).
+# Request payload for Joke#list.
 #
 # @!attribute [rw] category
 #   @return [Array, nil]
@@ -91,7 +91,7 @@ Search = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Search#list (any subset of Search fields).
+# Request payload for Search#list.
 #
 # @!attribute [rw] category
 #   @return [Array, nil]

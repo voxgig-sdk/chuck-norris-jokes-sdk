@@ -8,7 +8,7 @@ Complete API reference for the ChuckNorrisJokes Ruby SDK.
 ### Constructor
 
 ```ruby
-require_relative 'chuck-norris-jokes_sdk'
+require_relative 'ChuckNorrisJokes_sdk'
 
 client = ChuckNorrisJokesSDK.new(options)
 ```
@@ -99,12 +99,12 @@ category = client.Category
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Category.list(nil)
+results = client.Category.list
 ```
 
 ### Common Methods
@@ -147,20 +147,20 @@ joke = client.Joke
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `category` | ``$ARRAY`` | No |  |
-| `icon_url` | ``$STRING`` | Yes |  |
-| `id` | ``$STRING`` | Yes |  |
-| `url` | ``$STRING`` | Yes |  |
-| `value` | ``$STRING`` | Yes |  |
+| `category` | `Array` | No |  |
+| `icon_url` | `String` | Yes |  |
+| `id` | `String` | Yes |  |
+| `url` | `String` | Yes |  |
+| `value` | `String` | Yes |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Joke.list(nil)
+results = client.Joke.list
 ```
 
 ### Common Methods
@@ -203,20 +203,20 @@ search = client.Search
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `category` | ``$ARRAY`` | No |  |
-| `icon_url` | ``$STRING`` | Yes |  |
-| `id` | ``$STRING`` | Yes |  |
-| `url` | ``$STRING`` | Yes |  |
-| `value` | ``$STRING`` | Yes |  |
+| `category` | `Array` | No |  |
+| `icon_url` | `String` | Yes |  |
+| `id` | `String` | Yes |  |
+| `url` | `String` | Yes |  |
+| `value` | `String` | Yes |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Search.list(nil)
+results = client.Search.list
 ```
 
 ### Common Methods
