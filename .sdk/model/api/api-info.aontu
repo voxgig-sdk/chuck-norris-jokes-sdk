@@ -21,9 +21,9 @@ main: {
           url: "https://api.chucknorris.io"
         }
       ]
+      summary: "A free JSON API for hand curated Chuck Norris facts, including random jokes and categories."
       title: "Chuck Norris Jokes API"
       version: "1.0.0"
+      website: "https://api.chucknorris.io/"
     }
   }
-}
-

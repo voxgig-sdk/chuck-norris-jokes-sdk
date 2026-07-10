@@ -6,9 +6,6 @@
     },
     "kit": {
       "config": {
-        "auth": {
-          "prefix": "Bearer"
-        },
         "docs_order": [
           "ts",
           "py",
@@ -413,14 +410,17 @@
           "name": "Free to use",
           "url": "https://api.chucknorris.io/"
         },
+        "meta_source": "https://www.freepublicapis.com",
         "servers": [
           {
             "description": "Production server",
             "url": "https://api.chucknorris.io"
           }
         ],
+        "summary": "A free JSON API for hand curated Chuck Norris facts, including random jokes and categories.",
         "title": "Chuck Norris Jokes API",
-        "version": "1.0.0"
+        "version": "1.0.0",
+        "website": "https://api.chucknorris.io/"
       },
       "option": {},
       "target": {
@@ -473,6 +473,9 @@
           },
           "name": "go-cli",
           "phase": {
+            "agentguide": {
+              "active": false
+            },
             "entity": {
               "active": false
             },
@@ -523,6 +526,9 @@
           },
           "name": "go-mcp",
           "phase": {
+            "agentguide": {
+              "active": false
+            },
             "entity": {
               "active": false
             },
