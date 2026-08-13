@@ -14,12 +14,12 @@ from __future__ import annotations
 
 from urllib.parse import quote
 
-from config import make_config
-from features import _make_feature
-from core.control import ChuckNorrisJokesControl
-from core.error import ChuckNorrisJokesError
-from core.result import ChuckNorrisJokesResult
-from core.spec import ChuckNorrisJokesSpec
+from chucknorrisjokes_sdk.config import make_config
+from chucknorrisjokes_sdk.features import _make_feature
+from chucknorrisjokes_sdk.core.control import ChuckNorrisJokesControl
+from chucknorrisjokes_sdk.core.error import ChuckNorrisJokesError
+from chucknorrisjokes_sdk.core.result import ChuckNorrisJokesResult
+from chucknorrisjokes_sdk.core.spec import ChuckNorrisJokesSpec
 
 
 # True when this SDK was generated with the named feature.

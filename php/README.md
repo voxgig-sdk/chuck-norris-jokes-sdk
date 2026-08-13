@@ -53,7 +53,7 @@ Entity operations throw a `\Throwable` on failure, so wrap them in
 
 ```php
 try {
-    $categorys = $client->Category()->list();
+    $searchs = $client->Search()->list();
 } catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
@@ -125,9 +125,10 @@ Create a mock client for unit testing — no server required:
 ```php
 $client = ChuckNorrisJokesSDK::test();
 
-// Entity ops return the bare mock record (throws on error).
-$category = $client->Category()->list();
-print_r($category);
+// Entity ops return the ENTITY (throws on error);
+// call data_get() for the mock record.
+$search = $client->Search()->list();
+print_r($search);
 ```
 
 ### Use a custom fetch function
@@ -226,7 +227,7 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the bare result data (an `array` for single-entity
+Entity operations return the ENTITY (call data_get() for the record) (an `array` for single-entity
 ops, a `list` for `list`) and throw on error. Wrap calls in
 `try`/`catch` to handle failures.
 
@@ -257,7 +258,7 @@ API path: `/jokes/categories`
 
 | Field | Description |
 | --- | --- |
-| `category` |  |
+| `categories` |  |
 | `icon_url` |  |
 | `id` |  |
 | `url` |  |
@@ -271,7 +272,7 @@ API path: `/jokes/random`
 
 | Field | Description |
 | --- | --- |
-| `category` |  |
+| `categories` |  |
 | `icon_url` |  |
 | `id` |  |
 | `url` |  |
@@ -318,7 +319,7 @@ Create an instance: `$joke = $client->Joke();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `category` | `array` |  |
+| `categories` | `array` |  |
 | `icon_url` | `string` |  |
 | `id` | `string` |  |
 | `url` | `string` |  |
@@ -346,7 +347,7 @@ Create an instance: `$search = $client->Search();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `category` | `array` |  |
+| `categories` | `array` |  |
 | `icon_url` | `string` |  |
 | `id` | `string` |  |
 | `url` | `string` |  |
@@ -436,11 +437,11 @@ Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally.
 
 ```php
-$category = $client->Category();
-$category->list();
+$search = $client->Search();
+$search->list();
 
-// $category->data_get() now returns the category data from the last list
-// $category->match_get() returns the last match criteria
+// $search->data_get() now returns the search data from the last list
+// $search->match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

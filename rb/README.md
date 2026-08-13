@@ -51,7 +51,7 @@ Entity operations raise on failure, so rescue them:
 
 ```ruby
 begin
-  categorys = client.Category.list()
+  searchs = client.Search.list()
 rescue => err
   warn "list failed: #{err}"
 end
@@ -119,9 +119,10 @@ Create a mock client for unit testing — no server required:
 ```ruby
 client = ChuckNorrisJokesSDK.test
 
-# Entity ops return the bare mock record (raises on error).
-category = client.Category.list()
-puts category
+# Entity ops return the ENTITY (raises on error);
+# call data_get for the mock record.
+search = client.Search.list()
+puts search
 ```
 
 ### Use a custom fetch function
@@ -247,7 +248,7 @@ API path: `/jokes/categories`
 
 | Field | Description |
 | --- | --- |
-| `category` |  |
+| `categories` |  |
 | `icon_url` |  |
 | `id` |  |
 | `url` |  |
@@ -261,7 +262,7 @@ API path: `/jokes/random`
 
 | Field | Description |
 | --- | --- |
-| `category` |  |
+| `categories` |  |
 | `icon_url` |  |
 | `id` |  |
 | `url` |  |
@@ -308,7 +309,7 @@ Create an instance: `joke = client.Joke`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `category` | `Array` |  |
+| `categories` | `Array` |  |
 | `icon_url` | `String` |  |
 | `id` | `String` |  |
 | `url` | `String` |  |
@@ -336,7 +337,7 @@ Create an instance: `search = client.Search`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `category` | `Array` |  |
+| `categories` | `Array` |  |
 | `icon_url` | `String` |  |
 | `id` | `String` |  |
 | `url` | `String` |  |
@@ -426,11 +427,11 @@ Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally.
 
 ```ruby
-category = client.Category
-category.list()
+search = client.Search
+search.list()
 
-# category.data_get now returns the category data from the last list
-# category.match_get returns the last match criteria
+# search.data_get now returns the search data from the last list
+# search.match_get returns the last match criteria
 ```
 
 Call `make` to create a fresh instance with the same configuration

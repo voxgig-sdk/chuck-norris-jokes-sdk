@@ -142,7 +142,7 @@ joke = client.Joke()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `category` | `list` | No |  |
+| `categories` | `list` | No |  |
 | `icon_url` | `str` | Yes |  |
 | `id` | `str` | Yes |  |
 | `url` | `str` | Yes |  |
@@ -199,7 +199,7 @@ search = client.Search()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `category` | `list` | No |  |
+| `categories` | `list` | No |  |
 | `icon_url` | `str` | Yes |  |
 | `id` | `str` | Yes |  |
 | `url` | `str` | Yes |  |

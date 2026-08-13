@@ -151,7 +151,7 @@ fmt.Println(joke.GetName()) // "joke"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `category` | `[]any` | No |  |
+| `categories` | `[]any` | No |  |
 | `icon_url` | `string` | Yes |  |
 | `id` | `string` | Yes |  |
 | `url` | `string` | Yes |  |
@@ -206,7 +206,7 @@ fmt.Println(search.GetName()) // "search"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `category` | `[]any` | No |  |
+| `categories` | `[]any` | No |  |
 | `icon_url` | `string` | Yes |  |
 | `id` | `string` | Yes |  |
 | `url` | `string` | Yes |  |

@@ -144,7 +144,7 @@ local joke = client:Joke(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `category` | `table` | No |  |
+| `categories` | `table` | No |  |
 | `icon_url` | `string` | Yes |  |
 | `id` | `string` | Yes |  |
 | `url` | `string` | Yes |  |
@@ -200,7 +200,7 @@ local search = client:Search(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `category` | `table` | No |  |
+| `categories` | `table` | No |  |
 | `icon_url` | `string` | Yes |  |
 | `id` | `string` | Yes |  |
 | `url` | `string` | Yes |  |

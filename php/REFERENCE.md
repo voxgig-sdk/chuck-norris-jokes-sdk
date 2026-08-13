@@ -146,7 +146,7 @@ $joke = $client->Joke();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `category` | `array` | No |  |
+| `categories` | `array` | No |  |
 | `icon_url` | `string` | Yes |  |
 | `id` | `string` | Yes |  |
 | `url` | `string` | Yes |  |
@@ -202,7 +202,7 @@ $search = $client->Search();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `category` | `array` | No |  |
+| `categories` | `array` | No |  |
 | `icon_url` | `string` | Yes |  |
 | `id` | `string` | Yes |  |
 | `url` | `string` | Yes |  |

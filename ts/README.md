@@ -35,7 +35,9 @@ const client = new ChuckNorrisJokesSDK()
 
 ### 2. List category records
 
-`list()` resolves to an array of Category objects — iterate it directly:
+`list()` resolves to an array of Category ENTITIES — every operation
+resolves to entities, not raw records. Iterate them directly, and call
+`.data()` on one for the record it holds:
 
 ```ts
 const categorys = await client.Category().list()
@@ -52,8 +54,8 @@ Entity operations reject on failure, so wrap them in `try` / `catch`:
 
 ```ts
 try {
-  const categorys = await client.Category().list()
-  console.log(categorys)
+  const searchs = await client.Search().list()
+  console.log(searchs)
 } catch (err) {
   console.error('list failed:', err)
 }
@@ -119,9 +121,10 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = ChuckNorrisJokesSDK.test()
 
-const category = await client.Category().list()
-// category is a bare entity populated with mock response data
-console.log(category)
+const search = await client.Search().list()
+// search is the entity, populated with mock response data
+// — call search.data() for the record itself
+console.log(search)
 ```
 
 You can also use the instance method:
@@ -136,14 +139,14 @@ const testClient = client.tester()
 Entity instances remember their last match and data:
 
 ```ts
-const entity = client.Category()
+const entity = client.Search()
 
 // First call runs the operation and stores its result
 await entity.list()
 
 // Subsequent calls reuse the stored state
 const data = entity.data()
-console.log(data)
+console.log(data.id)
 ```
 
 ### Add custom middleware
@@ -295,7 +298,7 @@ API path: `/jokes/categories`
 
 | Field | Description |
 | --- | --- |
-| `category` |  |
+| `categories` |  |
 | `icon_url` |  |
 | `id` |  |
 | `url` |  |
@@ -309,7 +312,7 @@ API path: `/jokes/random`
 
 | Field | Description |
 | --- | --- |
-| `category` |  |
+| `categories` |  |
 | `icon_url` |  |
 | `id` |  |
 | `url` |  |
@@ -355,7 +358,7 @@ Create an instance: `const joke = client.Joke()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `category` | `any[]` |  |
+| `categories` | `any[]` |  |
 | `icon_url` | `string` |  |
 | `id` | `string` |  |
 | `url` | `string` |  |
@@ -382,7 +385,7 @@ Create an instance: `const search = client.Search()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `category` | `any[]` |  |
+| `categories` | `any[]` |  |
 | `icon_url` | `string` |  |
 | `id` | `string` |  |
 | `url` | `string` |  |
@@ -464,11 +467,11 @@ stores the returned data and match criteria internally. Subsequent
 calls on the same instance can rely on this state.
 
 ```ts
-const category = client.Category()
-await category.list()
+const search = client.Search()
+await search.list()
 
-// category.data() now returns the category data from the last `list`
-// category.match() returns the last match criteria
+// search.data() now returns the search data from the last `list`
+// search.match() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

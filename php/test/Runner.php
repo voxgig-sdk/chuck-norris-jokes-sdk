@@ -43,8 +43,8 @@ class ChuckNorrisJokesTestRunner
 
     public static function env_override(array $m): array
     {
-        $live = self::getenv('CHUCKNORRISJOKES_TEST_LIVE');
-        $override = self::getenv('CHUCKNORRISJOKES_TEST_OVERRIDE');
+        $live = self::getenv('CHUCK_NORRIS_JOKES_TEST_LIVE');
+        $override = self::getenv('CHUCK_NORRIS_JOKES_TEST_OVERRIDE');
 
         if ($live === 'TRUE' || $override === 'TRUE') {
             foreach (array_keys($m) as $key) {
@@ -63,9 +63,9 @@ class ChuckNorrisJokesTestRunner
             }
         }
 
-        $explain = self::getenv('CHUCKNORRISJOKES_TEST_EXPLAIN');
+        $explain = self::getenv('CHUCK_NORRIS_JOKES_TEST_EXPLAIN');
         if ($explain !== null && $explain !== '') {
-            $m['CHUCKNORRISJOKES_TEST_EXPLAIN'] = $explain;
+            $m['CHUCK_NORRIS_JOKES_TEST_EXPLAIN'] = $explain;
         }
 
         return $m;

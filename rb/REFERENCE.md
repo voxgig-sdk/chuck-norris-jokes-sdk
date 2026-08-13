@@ -147,7 +147,7 @@ joke = client.Joke
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `category` | `Array` | No |  |
+| `categories` | `Array` | No |  |
 | `icon_url` | `String` | Yes |  |
 | `id` | `String` | Yes |  |
 | `url` | `String` | Yes |  |
@@ -203,7 +203,7 @@ search = client.Search
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `category` | `Array` | No |  |
+| `categories` | `Array` | No |  |
 | `icon_url` | `String` | Yes |  |
 | `id` | `String` | Yes |  |
 | `url` | `String` | Yes |  |

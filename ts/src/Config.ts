@@ -21,7 +21,7 @@ class Config {
 
 
   main = {
-    name: 'ProjectName',
+    name: 'ChuckNorrisJokes',
   }
 
 
@@ -69,6 +69,7 @@ class Config {
             {
               "active": true,
               "args": {},
+              "kind": "http",
               "method": "GET",
               "orig": "/jokes/categories",
               "parts": [
@@ -94,7 +95,7 @@ class Config {
       "fields": [
         {
           "active": true,
-          "name": "category",
+          "name": "categories",
           "req": false,
           "type": "`$ARRAY`",
           "index$": 0
@@ -149,6 +150,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/jokes/random",
               "parts": [
@@ -163,7 +165,7 @@ class Config {
               },
               "transform": {
                 "req": "`reqdata`",
-                "res": "`body`"
+                "res": "`body.categories`"
               },
               "index$": 0
             }
@@ -179,7 +181,7 @@ class Config {
       "fields": [
         {
           "active": true,
-          "name": "category",
+          "name": "categories",
           "req": false,
           "type": "`$ARRAY`",
           "index$": 0
@@ -234,6 +236,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/jokes/search",
               "parts": [
@@ -247,7 +250,7 @@ class Config {
               },
               "transform": {
                 "req": "`reqdata`",
-                "res": "`body`"
+                "res": "`body.result`"
               },
               "index$": 0
             }

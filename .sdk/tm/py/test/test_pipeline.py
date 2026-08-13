@@ -16,11 +16,11 @@
 import pytest
 
 from projectname_sdk import ChuckNorrisJokesSDK
-from core.error import ChuckNorrisJokesError
-from core.result import ChuckNorrisJokesResult
-from core.response import ChuckNorrisJokesResponse
-from core.spec import ChuckNorrisJokesSpec
-from feature.base_feature import ChuckNorrisJokesBaseFeature
+from projectname_sdk.core.error import ChuckNorrisJokesError
+from projectname_sdk.core.result import ChuckNorrisJokesResult
+from projectname_sdk.core.response import ChuckNorrisJokesResponse
+from projectname_sdk.core.spec import ChuckNorrisJokesSpec
+from projectname_sdk.feature.base_feature import ChuckNorrisJokesBaseFeature
 
 
 def _client():

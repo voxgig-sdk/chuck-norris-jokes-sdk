@@ -18,7 +18,7 @@ end
 
 # Joke entity data model.
 #
-# @!attribute [rw] category
+# @!attribute [rw] categories
 #   @return [Array, nil]
 #
 # @!attribute [rw] icon_url
@@ -33,7 +33,7 @@ end
 # @!attribute [rw] value
 #   @return [String]
 Joke = Struct.new(
-  :category,
+  :categories,
   :icon_url,
   :id,
   :url,
@@ -43,7 +43,7 @@ Joke = Struct.new(
 
 # Request payload for Joke#list.
 #
-# @!attribute [rw] category
+# @!attribute [rw] categories
 #   @return [Array, nil]
 #
 # @!attribute [rw] icon_url
@@ -58,7 +58,7 @@ Joke = Struct.new(
 # @!attribute [rw] value
 #   @return [String, nil]
 JokeListMatch = Struct.new(
-  :category,
+  :categories,
   :icon_url,
   :id,
   :url,
@@ -68,7 +68,7 @@ JokeListMatch = Struct.new(
 
 # Search entity data model.
 #
-# @!attribute [rw] category
+# @!attribute [rw] categories
 #   @return [Array, nil]
 #
 # @!attribute [rw] icon_url
@@ -83,7 +83,7 @@ JokeListMatch = Struct.new(
 # @!attribute [rw] value
 #   @return [String]
 Search = Struct.new(
-  :category,
+  :categories,
   :icon_url,
   :id,
   :url,
@@ -93,7 +93,7 @@ Search = Struct.new(
 
 # Request payload for Search#list.
 #
-# @!attribute [rw] category
+# @!attribute [rw] categories
 #   @return [Array, nil]
 #
 # @!attribute [rw] icon_url
@@ -108,7 +108,7 @@ Search = Struct.new(
 # @!attribute [rw] value
 #   @return [String, nil]
 SearchListMatch = Struct.new(
-  :category,
+  :categories,
   :icon_url,
   :id,
   :url,

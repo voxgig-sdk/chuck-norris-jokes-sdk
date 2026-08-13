@@ -12,7 +12,7 @@ export interface CategoryListMatch {
 }
 
 export interface Joke {
-  category?: any[]
+  categories?: any[]
   icon_url: string
   id: string
   url: string
@@ -20,15 +20,21 @@ export interface Joke {
 }
 
 export interface JokeListMatch {
-  category?: any[]
+  categories?: any[]
   icon_url?: string
   id?: string
   url?: string
   value?: string
+
+  // Selects a custom action instead of the plain list:
+  //   'random'
+  // The remaining keys are that action's own payload.
+  $action?: string
+  [action: string]: any
 }
 
 export interface Search {
-  category?: any[]
+  categories?: any[]
   icon_url: string
   id: string
   url: string
@@ -36,7 +42,7 @@ export interface Search {
 }
 
 export interface SearchListMatch {
-  category?: any[]
+  categories?: any[]
   icon_url?: string
   id?: string
   url?: string

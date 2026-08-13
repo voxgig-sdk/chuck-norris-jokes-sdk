@@ -2,21 +2,21 @@
   "existing": {
     "search": {
       "SEARCH00": {
-        "category": [],
+        "categories": [],
         "icon_url": "s33",
         "id": "SEARCH00",
         "url": "s35",
         "value": "s36"
       },
       "SEARCH01": {
-        "category": [],
+        "categories": [],
         "icon_url": "s65",
         "id": "SEARCH01",
         "url": "s67",
         "value": "s68"
       },
       "SEARCH02": {
-        "category": [],
+        "categories": [],
         "icon_url": "s97",
         "id": "SEARCH02",
         "url": "s99",
@@ -27,7 +27,7 @@
   "new": {
     "search": {
       "search_ref01": {
-        "category": [],
+        "categories": [],
         "icon_url": "sc9",
         "url": "scb",
         "value": "scc"

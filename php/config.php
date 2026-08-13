@@ -41,6 +41,7 @@ class ChuckNorrisJokesConfig
                 [
                   'active' => true,
                   'args' => [],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/jokes/categories',
                   'parts' => [
@@ -66,7 +67,7 @@ class ChuckNorrisJokesConfig
           'fields' => [
             [
               'active' => true,
-              'name' => 'category',
+              'name' => 'categories',
               'req' => false,
               'type' => '`$ARRAY`',
               'index$' => 0,
@@ -121,6 +122,7 @@ class ChuckNorrisJokesConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/jokes/random',
                   'parts' => [
@@ -135,7 +137,7 @@ class ChuckNorrisJokesConfig
                   ],
                   'transform' => [
                     'req' => '`reqdata`',
-                    'res' => '`body`',
+                    'res' => '`body.categories`',
                   ],
                   'index$' => 0,
                 ],
@@ -151,7 +153,7 @@ class ChuckNorrisJokesConfig
           'fields' => [
             [
               'active' => true,
-              'name' => 'category',
+              'name' => 'categories',
               'req' => false,
               'type' => '`$ARRAY`',
               'index$' => 0,
@@ -206,6 +208,7 @@ class ChuckNorrisJokesConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/jokes/search',
                   'parts' => [
@@ -219,7 +222,7 @@ class ChuckNorrisJokesConfig
                   ],
                   'transform' => [
                     'req' => '`reqdata`',
-                    'res' => '`body`',
+                    'res' => '`body.result`',
                   ],
                   'index$' => 0,
                 ],

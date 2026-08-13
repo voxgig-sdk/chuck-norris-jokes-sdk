@@ -15,12 +15,14 @@ guide: {
     path: "/jokes/random": {
       action: "random": {}
       op: list: method: *GET
+      op: list: transform: res: *("`body.categories`")|top
     }
   }
 
   entity: search: {
     path: "/jokes/search": {
       op: list: method: *GET
+      op: list: transform: res: *("`body.result`")|top
     }
   }
 

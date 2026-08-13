@@ -66,11 +66,11 @@ function joke_direct_setup($mockres)
     $calls = new \ArrayObject();
 
     $env = Runner::env_override([
-        "CHUCKNORRISJOKES_TEST_JOKE_ENTID" => [],
-        "CHUCKNORRISJOKES_TEST_LIVE" => "FALSE",
+        "CHUCK_NORRIS_JOKES_TEST_JOKE_ENTID" => [],
+        "CHUCK_NORRIS_JOKES_TEST_LIVE" => "FALSE",
     ]);
 
-    $live = $env["CHUCKNORRISJOKES_TEST_LIVE"] === "TRUE";
+    $live = $env["CHUCK_NORRIS_JOKES_TEST_LIVE"] === "TRUE";
 
     if ($live) {
         $merged_opts = [

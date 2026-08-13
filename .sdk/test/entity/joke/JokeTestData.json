@@ -2,21 +2,21 @@
   "existing": {
     "joke": {
       "JOKE00": {
-        "category": [],
+        "categories": [],
         "icon_url": "s33",
         "id": "JOKE00",
         "url": "s35",
         "value": "s36"
       },
       "JOKE01": {
-        "category": [],
+        "categories": [],
         "icon_url": "s65",
         "id": "JOKE01",
         "url": "s67",
         "value": "s68"
       },
       "JOKE02": {
-        "category": [],
+        "categories": [],
         "icon_url": "s97",
         "id": "JOKE02",
         "url": "s99",
@@ -27,7 +27,7 @@
   "new": {
     "joke": {
       "joke_ref01": {
-        "category": [],
+        "categories": [],
         "icon_url": "sc9",
         "url": "scb",
         "value": "scc"

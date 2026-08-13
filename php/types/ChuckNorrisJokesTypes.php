@@ -25,7 +25,7 @@ class CategoryListMatch
 /** Joke entity data model. */
 class Joke
 {
-    public ?array $category = null;
+    public ?array $categories = null;
     public string $icon_url;
     public string $id;
     public string $url;
@@ -35,7 +35,7 @@ class Joke
 /** Request payload for Joke#list. */
 class JokeListMatch
 {
-    public ?array $category = null;
+    public ?array $categories = null;
     public ?string $icon_url = null;
     public ?string $id = null;
     public ?string $url = null;
@@ -45,7 +45,7 @@ class JokeListMatch
 /** Search entity data model. */
 class Search
 {
-    public ?array $category = null;
+    public ?array $categories = null;
     public string $icon_url;
     public string $id;
     public string $url;
@@ -55,7 +55,7 @@ class Search
 /** Request payload for Search#list. */
 class SearchListMatch
 {
-    public ?array $category = null;
+    public ?array $categories = null;
     public ?string $icon_url = null;
     public ?string $id = null;
     public ?string $url = null;

@@ -184,11 +184,31 @@ const joke = client.Joke()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `category` | `any[]` | No |  |
+| `categories` | `any[]` | No |  |
 | `icon_url` | `string` | Yes |  |
 | `id` | `string` | Yes |  |
 | `url` | `string` | Yes |  |
 | `value` | `string` | Yes |  |
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `random` | `/jokes/random` | `client.Joke().list({ $action: 'random', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+Joke record — check the API definition for its shape.
+
+```ts
+const result = await client.Joke().list({
+  $action: 'random',
+  /* ...the action's own arguments */
+})
+```
 
 ### Operations
 
@@ -238,7 +258,7 @@ const search = client.Search()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `category` | `any[]` | No |  |
+| `categories` | `any[]` | No |  |
 | `icon_url` | `string` | Yes |  |
 | `id` | `string` | Yes |  |
 | `url` | `string` | Yes |  |

@@ -60,11 +60,11 @@ def search_direct_setup(mockres)
   calls = []
 
   env = Runner.env_override({
-    "CHUCKNORRISJOKES_TEST_SEARCH_ENTID" => {},
-    "CHUCKNORRISJOKES_TEST_LIVE" => "FALSE",
+    "CHUCK_NORRIS_JOKES_TEST_SEARCH_ENTID" => {},
+    "CHUCK_NORRIS_JOKES_TEST_LIVE" => "FALSE",
   })
 
-  live = env["CHUCKNORRISJOKES_TEST_LIVE"] == "TRUE"
+  live = env["CHUCK_NORRIS_JOKES_TEST_LIVE"] == "TRUE"
 
   if live
     merged_opts = {

@@ -38,18 +38,27 @@ network, and no credentials:
 ### TypeScript
 
 ```ts
-const client = ChuckNorrisJokesSDK.test()
-const categorys = await client.Category().list()
-// categorys is an array of bare Category records populated with mock data
-console.log(categorys)
+// The offline mock starts EMPTY — seed it with the records the test needs.
+// Shape: { entity: { <entity-name>: { <id>: <record> } } }
+const client = ChuckNorrisJokesSDK.test({
+  entity: {
+    search: {
+      test01: { id: 'test01' },
+    },
+  },
+})
+const searchs = await client.Search().list()
+// searchs is an array of Search entities, populated with mock data
+// — call searchs[0].data() for the record itself
+console.log(searchs)
 ```
 
 ### Python
 
 ```python
 client = ChuckNorrisJokesSDK.test()
-categorys = client.Category().list()
-print(categorys)
+searchs = client.Search().list()
+print(searchs)
 ```
 
 ### PHP
@@ -57,16 +66,16 @@ print(categorys)
 ```php
 // Seed fixture data so offline calls resolve without a live server.
 $client = ChuckNorrisJokesSDK::test([
-    "entity" => ["category" => ["test01" => []]],
+    "entity" => ["search" => ["test01" => []]],
 ]);
-$categorys = $client->Category()->list();
+$searchs = $client->Search()->list();
 ```
 
 ### Golang
 
 ```go
 client := sdk.Test()
-result, err := client.Category(nil).List(
+result, err := client.Search(nil).List(
     nil, nil,
 )
 ```
@@ -76,16 +85,16 @@ result, err := client.Category(nil).List(
 ```ruby
 # Seed fixture data so offline calls resolve without a live server.
 client = ChuckNorrisJokesSDK.test({
-  "entity" => { "category" => { "test01" => {} } },
+  "entity" => { "search" => { "test01" => {} } },
 })
-categorys = client.Category.list()
+searchs = client.Search.list()
 ```
 
 ### Lua
 
 ```lua
 local client = sdk.test()
-local results, err = client:Category():list()
+local results, err = client:Search():list()
 ```
 
 ## Packages
@@ -110,7 +119,7 @@ import { ChuckNorrisJokesSDK } from '@voxgig-sdk/chuck-norris-jokes'
 
 const client = new ChuckNorrisJokesSDK()
 
-// List all categorys (returns Category[])
+// List all categorys (returns CategoryEntity[] — .data() for the record)
 const categorys = await client.Category().list()
 for (const category of categorys) {
   console.log(category)
@@ -345,6 +354,9 @@ Pass custom features via the `extend` option at construction time.
 
 This SDK is generated from the upstream OpenAPI specification. It is an
 unofficial client and is not affiliated with the API provider.
+
+The OpenAPI spec(s) this SDK was generated from are kept in the
+[`.sdk/def/`](.sdk/def/) folder.
 
 - Upstream API: [https://api.chucknorris.io/](https://api.chucknorris.io/)
 

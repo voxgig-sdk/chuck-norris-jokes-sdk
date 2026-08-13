@@ -54,7 +54,7 @@ Entity operations return `(value, err)`. Check `err` before using
 the value:
 
 ```lua
-local categorys, err = client:Category():list()
+local searchs, err = client:Search():list()
 if err then error(err) end
 ```
 
@@ -112,7 +112,7 @@ Create a mock client for unit testing — no server required:
 ```lua
 local client = sdk.test()
 
-local result, err = client:Category():list()
+local result, err = client:Search():list()
 -- result is the returned data; err is set on failure
 ```
 
@@ -220,9 +220,9 @@ data **directly** — there is no wrapper:
 
 Check `err` first (it is non-`nil` on failure), then use `value`:
 
-    local category, err = client:Category():load()
+    local category, err = client:Category():list()
     if err then error(err) end
-    -- category is the loaded record
+    -- category is the record list
 
 Only `direct()` returns a response envelope — a `table` with `ok`,
 `status`, `headers`, and `data` keys.
@@ -242,7 +242,7 @@ API path: `/jokes/categories`
 
 | Field | Description |
 | --- | --- |
-| `category` |  |
+| `categories` |  |
 | `icon_url` |  |
 | `id` |  |
 | `url` |  |
@@ -256,7 +256,7 @@ API path: `/jokes/random`
 
 | Field | Description |
 | --- | --- |
-| `category` |  |
+| `categories` |  |
 | `icon_url` |  |
 | `id` |  |
 | `url` |  |
@@ -302,7 +302,7 @@ Create an instance: `local joke = client:Joke(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `category` | `table` |  |
+| `categories` | `table` |  |
 | `icon_url` | `string` |  |
 | `id` | `string` |  |
 | `url` | `string` |  |
@@ -329,7 +329,7 @@ Create an instance: `local search = client:Search(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `category` | `table` |  |
+| `categories` | `table` |  |
 | `icon_url` | `string` |  |
 | `id` | `string` |  |
 | `url` | `string` |  |
@@ -418,11 +418,11 @@ Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally.
 
 ```lua
-local category = client:Category()
-category:list()
+local search = client:Search()
+search:list()
 
--- category:data_get() now returns the category data from the last list
--- category:match_get() returns the last match criteria
+-- search:data_get() now returns the search data from the last list
+-- search:match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

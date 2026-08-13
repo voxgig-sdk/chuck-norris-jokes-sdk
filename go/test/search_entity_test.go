@@ -92,7 +92,7 @@ func TestSearchEntity(t *testing.T) {
 		// The basic flow consumes synthetic IDs from the fixture. In live mode
 		// without an *_ENTID env override, those IDs hit the live API and 4xx.
 		if setup.syntheticOnly {
-			t.Skip("live entity test uses synthetic IDs from fixture — set CHUCKNORRISJOKES_TEST_SEARCH_ENTID JSON to run live")
+			t.Skip("live entity test uses synthetic IDs from fixture — set CHUCK_NORRIS_JOKES_TEST_SEARCH_ENTID JSON to run live")
 			return
 		}
 		client := setup.client
@@ -160,21 +160,21 @@ func searchBasicSetup(extra map[string]any) *entityTestSetup {
 	// Detect ENTID env override before envOverride consumes it. When live
 	// mode is on without a real override, the basic test runs against synthetic
 	// IDs from the fixture and 4xx's. Surface this so the test can skip.
-	entidEnvRaw := os.Getenv("CHUCKNORRISJOKES_TEST_SEARCH_ENTID")
+	entidEnvRaw := os.Getenv("CHUCK_NORRIS_JOKES_TEST_SEARCH_ENTID")
 	idmapOverridden := entidEnvRaw != "" && strings.HasPrefix(strings.TrimSpace(entidEnvRaw), "{")
 
 	env := envOverride(map[string]any{
-		"CHUCKNORRISJOKES_TEST_SEARCH_ENTID": idmap,
-		"CHUCKNORRISJOKES_TEST_LIVE":      "FALSE",
-		"CHUCKNORRISJOKES_TEST_EXPLAIN":   "FALSE",
+		"CHUCK_NORRIS_JOKES_TEST_SEARCH_ENTID": idmap,
+		"CHUCK_NORRIS_JOKES_TEST_LIVE":      "FALSE",
+		"CHUCK_NORRIS_JOKES_TEST_EXPLAIN":   "FALSE",
 	})
 
-	idmapResolved := core.ToMapAny(env["CHUCKNORRISJOKES_TEST_SEARCH_ENTID"])
+	idmapResolved := core.ToMapAny(env["CHUCK_NORRIS_JOKES_TEST_SEARCH_ENTID"])
 	if idmapResolved == nil {
 		idmapResolved = core.ToMapAny(idmap)
 	}
 
-	if env["CHUCKNORRISJOKES_TEST_LIVE"] == "TRUE" {
+	if env["CHUCK_NORRIS_JOKES_TEST_LIVE"] == "TRUE" {
 		mergedOpts := vs.Merge([]any{
 			map[string]any{
 			},
@@ -183,13 +183,13 @@ func searchBasicSetup(extra map[string]any) *entityTestSetup {
 		client = sdk.NewChuckNorrisJokesSDK(core.ToMapAny(mergedOpts))
 	}
 
-	live := env["CHUCKNORRISJOKES_TEST_LIVE"] == "TRUE"
+	live := env["CHUCK_NORRIS_JOKES_TEST_LIVE"] == "TRUE"
 	return &entityTestSetup{
 		client:        client,
 		data:          entityData,
 		idmap:         idmapResolved,
 		env:           env,
-		explain:       env["CHUCKNORRISJOKES_TEST_EXPLAIN"] == "TRUE",
+		explain:       env["CHUCK_NORRIS_JOKES_TEST_EXPLAIN"] == "TRUE",
 		live:          live,
 		syntheticOnly: live && !idmapOverridden,
 		now:           time.Now().UnixMilli(),

@@ -11,28 +11,28 @@
 ---@class CategoryListMatch
 
 ---@class Joke
----@field category? table
+---@field categories? table
 ---@field icon_url string
 ---@field id string
 ---@field url string
 ---@field value string
 
 ---@class JokeListMatch
----@field category? table
+---@field categories? table
 ---@field icon_url? string
 ---@field id? string
 ---@field url? string
 ---@field value? string
 
 ---@class Search
----@field category? table
+---@field categories? table
 ---@field icon_url string
 ---@field id string
 ---@field url string
 ---@field value string
 
 ---@class SearchListMatch
----@field category? table
+---@field categories? table
 ---@field icon_url? string
 ---@field id? string
 ---@field url? string

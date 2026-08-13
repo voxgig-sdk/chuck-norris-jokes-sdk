@@ -68,12 +68,12 @@ Every entity operation returns `(value, error)`. Check `err` before
 using the value — there is no exception to catch:
 
 ```go
-categorys, err := client.Category(nil).List(nil, nil)
+searchs, err := client.Search(nil).List(nil, nil)
 if err != nil {
     // handle err
     return
 }
-_ = categorys
+_ = searchs
 ```
 
 `Direct` follows the same `(value, error)` convention:
@@ -137,13 +137,13 @@ Create a mock client for unit testing — no server required:
 ```go
 client := sdk.Test()
 
-category, err := client.Category(nil).List(
+search, err := client.Search(nil).List(
     nil, nil,
 )
 if err != nil {
     panic(err)
 }
-fmt.Println(category) // the returned mock data
+fmt.Println(search) // the returned mock data
 ```
 
 ### Use a custom fetch function
@@ -271,7 +271,7 @@ API path: `/jokes/categories`
 
 | Field | Description |
 | --- | --- |
-| `"category"` |  |
+| `"categories"` |  |
 | `"icon_url"` |  |
 | `"id"` |  |
 | `"url"` |  |
@@ -285,7 +285,7 @@ API path: `/jokes/random`
 
 | Field | Description |
 | --- | --- |
-| `"category"` |  |
+| `"categories"` |  |
 | `"icon_url"` |  |
 | `"id"` |  |
 | `"url"` |  |
@@ -335,7 +335,7 @@ Create an instance: `joke := client.Joke(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `category` | `[]any` |  |
+| `categories` | `[]any` |  |
 | `icon_url` | `string` |  |
 | `id` | `string` |  |
 | `url` | `string` |  |
@@ -366,7 +366,7 @@ Create an instance: `search := client.Search(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `category` | `[]any` |  |
+| `categories` | `[]any` |  |
 | `icon_url` | `string` |  |
 | `id` | `string` |  |
 | `url` | `string` |  |
@@ -456,11 +456,11 @@ Entity instances are stateful. After a successful `List`, the entity
 stores the returned data and match criteria internally.
 
 ```go
-category := client.Category(nil)
-category.List(nil, nil)
+search := client.Search(nil)
+search.List(nil, nil)
 
-// category.Data() now returns the category data from the last list
-// category.Match() returns the last match criteria
+// search.Data() now returns the search data from the last list
+// search.Match() returns the last match criteria
 ```
 
 Call `Make()` to create a fresh instance with the same configuration
