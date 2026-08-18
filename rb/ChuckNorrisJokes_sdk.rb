@@ -28,7 +28,7 @@ class ChuckNorrisJokesSDK
     utility = ChuckNorrisJokesUtility.new
     @_utility = utility
 
-    config = ChuckNorrisJokesConfig.make_config
+    config = ChuckNorrisJokesConfig.shared_config
 
     @_rootctx = utility.make_context.call({
       "client" => self,

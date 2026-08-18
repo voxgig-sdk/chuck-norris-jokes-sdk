@@ -23,7 +23,7 @@ func NewChuckNorrisJokesSDK(options map[string]any) *ChuckNorrisJokesSDK {
 
 	sdk.utility = NewUtility()
 
-	config := MakeConfig()
+	config := SharedConfig()
 
 	sdk.rootctx = sdk.utility.MakeContext(map[string]any{
 		"client":  sdk,

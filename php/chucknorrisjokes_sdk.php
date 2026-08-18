@@ -40,7 +40,7 @@ class ChuckNorrisJokesSDK
         $utility = new ChuckNorrisJokesUtility();
         $this->_utility = $utility;
 
-        $config = ChuckNorrisJokesConfig::make_config();
+        $config = ChuckNorrisJokesConfig::shared_config();
 
         $this->_rootctx = ($utility->make_context)([
             "client" => $this,
