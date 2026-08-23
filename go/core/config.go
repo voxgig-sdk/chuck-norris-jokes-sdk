@@ -11,6 +11,9 @@ func MakeConfig() map[string]any {
 	return map[string]any{
 		"main": map[string]any{
 			"name": "ChuckNorrisJokes",
+			"slug": "chuck-norris-jokes",
+			"version": "0.0.1",
+			"target": "go",
 		},
 		"feature": map[string]any{
 			"test": map[string]any{
@@ -65,26 +68,31 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "categories",
+						"short": "Categories associated with the joke",
 						"type": "`$ARRAY`",
 					},
 					map[string]any{
 						"name": "icon_url",
 						"req": true,
+						"short": "URL to Chuck Norris avatar icon",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "id",
 						"req": true,
+						"short": "Unique identifier for the joke",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "url",
 						"req": true,
+						"short": "Direct URL to the joke",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "value",
 						"req": true,
+						"short": "The actual Chuck Norris joke text",
 						"type": "`$STRING`",
 					},
 				},
@@ -135,26 +143,31 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "categories",
+						"short": "Categories associated with the joke",
 						"type": "`$ARRAY`",
 					},
 					map[string]any{
 						"name": "icon_url",
 						"req": true,
+						"short": "URL to Chuck Norris avatar icon",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "id",
 						"req": true,
+						"short": "Unique identifier for the joke",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "url",
 						"req": true,
+						"short": "Direct URL to the joke",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "value",
 						"req": true,
+						"short": "The actual Chuck Norris joke text",
 						"type": "`$STRING`",
 					},
 				},

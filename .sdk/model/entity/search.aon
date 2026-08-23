@@ -1,6 +1,6 @@
-# Entity: joke
+# Entity: search
 
-main: kit: entity: joke: {
+main: kit: entity: search: {
 
   alias: field: {}
 
@@ -8,26 +8,31 @@ main: kit: entity: joke: {
     {
       name: "categories"
       req: false
+      short: "Categories associated with the joke"
       type: "`$ARRAY`"
     }
     {
       name: "icon_url"
       req: true
+      short: "URL to Chuck Norris avatar icon"
       type: "`$STRING`"
     }
     {
       name: "id"
       req: true
+      short: "Unique identifier for the joke"
       type: "`$STRING`"
     }
     {
       name: "url"
       req: true
+      short: "Direct URL to the joke"
       type: "`$STRING`"
     }
     {
       name: "value"
       req: true
+      short: "The actual Chuck Norris joke text"
       type: "`$STRING`"
     }
   ]
@@ -37,7 +42,7 @@ main: kit: entity: joke: {
     name: "id"
   }
 
-  name: "joke"
+  name: "search"
   op: {
     list: {
       name: "list"
@@ -46,30 +51,29 @@ main: kit: entity: joke: {
           args: {
             query: [
               {
-                example: "dev"
+                example: "roundhouse"
                 kind: "query"
-                name: "category"
-                orig: "category"
-                reqd: false
+                name: "query"
+                orig: "query"
+                reqd: true
                 type: "`$STRING`"
               }
             ]
           }
           method: "GET"
-          orig: "/jokes/random"
+          orig: "/jokes/search"
           parts: [
             "jokes"
-            "random"
+            "search"
           ]
           select: {
-            "$action": "random"
             exist: [
-              "category"
+              "query"
             ]
           }
           transform: {
             req: "`reqdata`"
-            res: "`body.categories`"
+            res: "`body.result`"
           }
         }
       ]

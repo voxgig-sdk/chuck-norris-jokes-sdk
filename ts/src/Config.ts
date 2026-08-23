@@ -19,9 +19,20 @@ class Config {
     return fi
   }
 
+  // False for a feature added at runtime via options.extend (station's
+  // adopt path) - the constructor uses this to skip makeFeature for names
+  // no generated class backs.
+  hasFeature(this: any, fn: string) {
+    return null != FEATURE_CLASS[fn]
+  }
+
 
   main = {
     name: 'ChuckNorrisJokes',
+        slug: "chuck-norris-jokes",
+    version: "0.0.1",
+    target: "ts",
+
   }
 
 
@@ -92,26 +103,31 @@ class Config {
       "fields": [
         {
           "name": "categories",
+          "short": "Categories associated with the joke",
           "type": "`$ARRAY`"
         },
         {
           "name": "icon_url",
           "req": true,
+          "short": "URL to Chuck Norris avatar icon",
           "type": "`$STRING`"
         },
         {
           "name": "id",
           "req": true,
+          "short": "Unique identifier for the joke",
           "type": "`$STRING`"
         },
         {
           "name": "url",
           "req": true,
+          "short": "Direct URL to the joke",
           "type": "`$STRING`"
         },
         {
           "name": "value",
           "req": true,
+          "short": "The actual Chuck Norris joke text",
           "type": "`$STRING`"
         }
       ],
@@ -162,26 +178,31 @@ class Config {
       "fields": [
         {
           "name": "categories",
+          "short": "Categories associated with the joke",
           "type": "`$ARRAY`"
         },
         {
           "name": "icon_url",
           "req": true,
+          "short": "URL to Chuck Norris avatar icon",
           "type": "`$STRING`"
         },
         {
           "name": "id",
           "req": true,
+          "short": "Unique identifier for the joke",
           "type": "`$STRING`"
         },
         {
           "name": "url",
           "req": true,
+          "short": "Direct URL to the joke",
           "type": "`$STRING`"
         },
         {
           "name": "value",
           "req": true,
+          "short": "The actual Chuck Norris joke text",
           "type": "`$STRING`"
         }
       ],

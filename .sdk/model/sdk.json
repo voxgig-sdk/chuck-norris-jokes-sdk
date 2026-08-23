@@ -71,30 +71,35 @@
               "active": true,
               "name": "categories",
               "req": false,
+              "short": "Categories associated with the joke",
               "type": "`$ARRAY`"
             },
             {
               "active": true,
               "name": "icon_url",
               "req": true,
+              "short": "URL to Chuck Norris avatar icon",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "id",
               "req": true,
+              "short": "Unique identifier for the joke",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "url",
               "req": true,
+              "short": "Direct URL to the joke",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "value",
               "req": true,
+              "short": "The actual Chuck Norris joke text",
               "type": "`$STRING`"
             }
           ],
@@ -158,30 +163,35 @@
               "active": true,
               "name": "categories",
               "req": false,
+              "short": "Categories associated with the joke",
               "type": "`$ARRAY`"
             },
             {
               "active": true,
               "name": "icon_url",
               "req": true,
+              "short": "URL to Chuck Norris avatar icon",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "id",
               "req": true,
+              "short": "Unique identifier for the joke",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "url",
               "req": true,
+              "short": "Direct URL to the joke",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "value",
               "req": true,
+              "short": "The actual Chuck Norris joke text",
               "type": "`$STRING`"
             }
           ],

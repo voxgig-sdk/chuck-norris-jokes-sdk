@@ -9,7 +9,7 @@ The API is exposed as capitalised, semantic **Entities** — e.g.
 instead of raw URL paths and query parameters. This keeps the surface
 predictable and low-friction for both humans and AI agents.
 
-> Other languages, the CLI, and MCP server live alongside this one — see
+> Also generated from this model: `go`, `go-cli`, `go-mcp`, `lua`, `php`, `py`, `rb` — see
 > the [top-level README](../README.md).
 
 
@@ -298,11 +298,11 @@ API path: `/jokes/categories`
 
 | Field | Description |
 | --- | --- |
-| `categories` |  |
-| `icon_url` |  |
-| `id` |  |
-| `url` |  |
-| `value` |  |
+| `categories` | Categories associated with the joke |
+| `icon_url` | URL to Chuck Norris avatar icon |
+| `id` | Unique identifier for the joke |
+| `url` | Direct URL to the joke |
+| `value` | The actual Chuck Norris joke text |
 
 Operations: list.
 
@@ -312,11 +312,11 @@ API path: `/jokes/random`
 
 | Field | Description |
 | --- | --- |
-| `categories` |  |
-| `icon_url` |  |
-| `id` |  |
-| `url` |  |
-| `value` |  |
+| `categories` | Categories associated with the joke |
+| `icon_url` | URL to Chuck Norris avatar icon |
+| `id` | Unique identifier for the joke |
+| `url` | Direct URL to the joke |
+| `value` | The actual Chuck Norris joke text |
 
 Operations: list.
 
@@ -358,11 +358,11 @@ Create an instance: `const joke = client.Joke()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `categories` | `any[]` |  |
-| `icon_url` | `string` |  |
-| `id` | `string` |  |
-| `url` | `string` |  |
-| `value` | `string` |  |
+| `categories` | `any[]` | Categories associated with the joke |
+| `icon_url` | `string` | URL to Chuck Norris avatar icon |
+| `id` | `string` | Unique identifier for the joke |
+| `url` | `string` | Direct URL to the joke |
+| `value` | `string` | The actual Chuck Norris joke text |
 
 #### Example: List
 
@@ -385,11 +385,11 @@ Create an instance: `const search = client.Search()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `categories` | `any[]` |  |
-| `icon_url` | `string` |  |
-| `id` | `string` |  |
-| `url` | `string` |  |
-| `value` | `string` |  |
+| `categories` | `any[]` | Categories associated with the joke |
+| `icon_url` | `string` | URL to Chuck Norris avatar icon |
+| `id` | `string` | Unique identifier for the joke |
+| `url` | `string` | Direct URL to the joke |
+| `value` | `string` | The actual Chuck Norris joke text |
 
 #### Example: List
 

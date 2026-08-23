@@ -6,7 +6,7 @@ The Golang SDK for the ChuckNorrisJokes API — an entity-oriented client using 
 
 It exposes the API as capitalised, semantic **Entities** — e.g. `client.Category(nil)` — each with the same small set of operations (`List`) instead of raw URL paths and query strings. You call meaning, not endpoints, which keeps the cognitive load low.
 
-> Other languages, the CLI, and MCP server live alongside this one — see
+> Also generated from this model: `go-cli`, `go-mcp`, `lua`, `php`, `py`, `rb`, `ts` — see
 > the [top-level README](../README.md).
 
 
@@ -271,11 +271,11 @@ API path: `/jokes/categories`
 
 | Field | Description |
 | --- | --- |
-| `"categories"` |  |
-| `"icon_url"` |  |
-| `"id"` |  |
-| `"url"` |  |
-| `"value"` |  |
+| `"categories"` | Categories associated with the joke |
+| `"icon_url"` | URL to Chuck Norris avatar icon |
+| `"id"` | Unique identifier for the joke |
+| `"url"` | Direct URL to the joke |
+| `"value"` | The actual Chuck Norris joke text |
 
 Operations: List.
 
@@ -285,11 +285,11 @@ API path: `/jokes/random`
 
 | Field | Description |
 | --- | --- |
-| `"categories"` |  |
-| `"icon_url"` |  |
-| `"id"` |  |
-| `"url"` |  |
-| `"value"` |  |
+| `"categories"` | Categories associated with the joke |
+| `"icon_url"` | URL to Chuck Norris avatar icon |
+| `"id"` | Unique identifier for the joke |
+| `"url"` | Direct URL to the joke |
+| `"value"` | The actual Chuck Norris joke text |
 
 Operations: List.
 
@@ -335,11 +335,11 @@ Create an instance: `joke := client.Joke(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `categories` | `[]any` |  |
-| `icon_url` | `string` |  |
-| `id` | `string` |  |
-| `url` | `string` |  |
-| `value` | `string` |  |
+| `categories` | `[]any` | Categories associated with the joke |
+| `icon_url` | `string` | URL to Chuck Norris avatar icon |
+| `id` | `string` | Unique identifier for the joke |
+| `url` | `string` | Direct URL to the joke |
+| `value` | `string` | The actual Chuck Norris joke text |
 
 #### Example: List
 
@@ -366,11 +366,11 @@ Create an instance: `search := client.Search(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `categories` | `[]any` |  |
-| `icon_url` | `string` |  |
-| `id` | `string` |  |
-| `url` | `string` |  |
-| `value` | `string` |  |
+| `categories` | `[]any` | Categories associated with the joke |
+| `icon_url` | `string` | URL to Chuck Norris avatar icon |
+| `id` | `string` | Unique identifier for the joke |
+| `url` | `string` | Direct URL to the joke |
+| `value` | `string` | The actual Chuck Norris joke text |
 
 #### Example: List
 

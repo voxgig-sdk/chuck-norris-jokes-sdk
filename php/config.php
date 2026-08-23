@@ -33,6 +33,9 @@ class ChuckNorrisJokesConfig
         return [
             "main" => [
                 "name" => "ChuckNorrisJokes",
+                "slug" => "chuck-norris-jokes",
+                "version" => "0.0.1",
+                "target" => "php",
             ],
             "feature" => [
                 "test" => [
@@ -87,26 +90,31 @@ class ChuckNorrisJokesConfig
           'fields' => [
             [
               'name' => 'categories',
+              'short' => 'Categories associated with the joke',
               'type' => '`$ARRAY`',
             ],
             [
               'name' => 'icon_url',
               'req' => true,
+              'short' => 'URL to Chuck Norris avatar icon',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'id',
               'req' => true,
+              'short' => 'Unique identifier for the joke',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'url',
               'req' => true,
+              'short' => 'Direct URL to the joke',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'value',
               'req' => true,
+              'short' => 'The actual Chuck Norris joke text',
               'type' => '`$STRING`',
             ],
           ],
@@ -157,26 +165,31 @@ class ChuckNorrisJokesConfig
           'fields' => [
             [
               'name' => 'categories',
+              'short' => 'Categories associated with the joke',
               'type' => '`$ARRAY`',
             ],
             [
               'name' => 'icon_url',
               'req' => true,
+              'short' => 'URL to Chuck Norris avatar icon',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'id',
               'req' => true,
+              'short' => 'Unique identifier for the joke',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'url',
               'req' => true,
+              'short' => 'Direct URL to the joke',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'value',
               'req' => true,
+              'short' => 'The actual Chuck Norris joke text',
               'type' => '`$STRING`',
             ],
           ],

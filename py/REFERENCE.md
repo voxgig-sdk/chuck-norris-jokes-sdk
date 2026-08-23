@@ -142,11 +142,11 @@ joke = client.Joke()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `categories` | `list` | No |  |
-| `icon_url` | `str` | Yes |  |
-| `id` | `str` | Yes |  |
-| `url` | `str` | Yes |  |
-| `value` | `str` | Yes |  |
+| `categories` | `list` | No | Categories associated with the joke |
+| `icon_url` | `str` | Yes | URL to Chuck Norris avatar icon |
+| `id` | `str` | Yes | Unique identifier for the joke |
+| `url` | `str` | Yes | Direct URL to the joke |
+| `value` | `str` | Yes | The actual Chuck Norris joke text |
 
 ### Operations
 
@@ -199,11 +199,11 @@ search = client.Search()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `categories` | `list` | No |  |
-| `icon_url` | `str` | Yes |  |
-| `id` | `str` | Yes |  |
-| `url` | `str` | Yes |  |
-| `value` | `str` | Yes |  |
+| `categories` | `list` | No | Categories associated with the joke |
+| `icon_url` | `str` | Yes | URL to Chuck Norris avatar icon |
+| `id` | `str` | Yes | Unique identifier for the joke |
+| `url` | `str` | Yes | Direct URL to the joke |
+| `value` | `str` | Yes | The actual Chuck Norris joke text |
 
 ### Operations
 

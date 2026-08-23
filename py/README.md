@@ -254,11 +254,11 @@ API path: `/jokes/categories`
 
 | Field | Description |
 | --- | --- |
-| `categories` |  |
-| `icon_url` |  |
-| `id` |  |
-| `url` |  |
-| `value` |  |
+| `categories` | Categories associated with the joke |
+| `icon_url` | URL to Chuck Norris avatar icon |
+| `id` | Unique identifier for the joke |
+| `url` | Direct URL to the joke |
+| `value` | The actual Chuck Norris joke text |
 
 Operations: List.
 
@@ -268,11 +268,11 @@ API path: `/jokes/random`
 
 | Field | Description |
 | --- | --- |
-| `categories` |  |
-| `icon_url` |  |
-| `id` |  |
-| `url` |  |
-| `value` |  |
+| `categories` | Categories associated with the joke |
+| `icon_url` | URL to Chuck Norris avatar icon |
+| `id` | Unique identifier for the joke |
+| `url` | Direct URL to the joke |
+| `value` | The actual Chuck Norris joke text |
 
 Operations: List.
 
@@ -314,11 +314,11 @@ Create an instance: `joke = client.Joke()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `categories` | `list` |  |
-| `icon_url` | `str` |  |
-| `id` | `str` |  |
-| `url` | `str` |  |
-| `value` | `str` |  |
+| `categories` | `list` | Categories associated with the joke |
+| `icon_url` | `str` | URL to Chuck Norris avatar icon |
+| `id` | `str` | Unique identifier for the joke |
+| `url` | `str` | Direct URL to the joke |
+| `value` | `str` | The actual Chuck Norris joke text |
 
 #### Example: List
 
@@ -341,11 +341,11 @@ Create an instance: `search = client.Search()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `categories` | `list` |  |
-| `icon_url` | `str` |  |
-| `id` | `str` |  |
-| `url` | `str` |  |
-| `value` | `str` |  |
+| `categories` | `list` | Categories associated with the joke |
+| `icon_url` | `str` | URL to Chuck Norris avatar icon |
+| `id` | `str` | Unique identifier for the joke |
+| `url` | `str` | Direct URL to the joke |
+| `value` | `str` | The actual Chuck Norris joke text |
 
 #### Example: List
 
