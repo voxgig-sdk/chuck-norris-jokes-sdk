@@ -28,6 +28,7 @@ module ChuckNorrisJokesConfig
           "options" => {
             "active" => false,
           },
+          "transport" => "base",
         },
       },
       "options" => {
