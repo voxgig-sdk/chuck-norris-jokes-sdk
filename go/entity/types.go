@@ -31,11 +31,7 @@ type Joke struct {
 
 // JokeListMatch is the typed request payload for Joke.ListTyped.
 type JokeListMatch struct {
-	Categories *[]any `json:"categories,omitempty"`
-	IconUrl *string `json:"icon_url,omitempty"`
-	Id *string `json:"id,omitempty"`
-	Url *string `json:"url,omitempty"`
-	Value *string `json:"value,omitempty"`
+	Category *string `json:"category,omitempty"`
 }
 
 // Search is the typed data model for the search entity.
@@ -49,11 +45,7 @@ type Search struct {
 
 // SearchListMatch is the typed request payload for Search.ListTyped.
 type SearchListMatch struct {
-	Categories *[]any `json:"categories,omitempty"`
-	IconUrl *string `json:"icon_url,omitempty"`
-	Id *string `json:"id,omitempty"`
-	Url *string `json:"url,omitempty"`
-	Value *string `json:"value,omitempty"`
+	Query string `json:"query"`
 }
 
 // asMap turns a typed request/data struct into the map[string]any the

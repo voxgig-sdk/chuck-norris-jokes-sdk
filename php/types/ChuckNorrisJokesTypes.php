@@ -35,11 +35,7 @@ class Joke
 /** Request payload for Joke#list. */
 class JokeListMatch
 {
-    public ?array $categories = null;
-    public ?string $icon_url = null;
-    public ?string $id = null;
-    public ?string $url = null;
-    public ?string $value = null;
+    public ?string $category = null;
 }
 
 /** Search entity data model. */
@@ -55,10 +51,6 @@ class Search
 /** Request payload for Search#list. */
 class SearchListMatch
 {
-    public ?array $categories = null;
-    public ?string $icon_url = null;
-    public ?string $id = null;
-    public ?string $url = null;
-    public ?string $value = null;
+    public string $query;
 }
 

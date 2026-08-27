@@ -18,11 +18,7 @@
 ---@field value string
 
 ---@class JokeListMatch
----@field categories? table
----@field icon_url? string
----@field id? string
----@field url? string
----@field value? string
+---@field category? string
 
 ---@class Search
 ---@field categories? table
@@ -32,11 +28,7 @@
 ---@field value string
 
 ---@class SearchListMatch
----@field categories? table
----@field icon_url? string
----@field id? string
----@field url? string
----@field value? string
+---@field query string
 
 local M = {}
 

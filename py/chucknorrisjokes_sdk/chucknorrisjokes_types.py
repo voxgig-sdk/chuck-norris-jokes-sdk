@@ -36,11 +36,7 @@ class Joke(JokeRequired, total=False):
 
 
 class JokeListMatch(TypedDict, total=False):
-    categories: list
-    icon_url: str
-    id: str
-    url: str
-    value: str
+    category: str
 
 
 class SearchRequired(TypedDict):
@@ -54,9 +50,5 @@ class Search(SearchRequired, total=False):
     categories: list
 
 
-class SearchListMatch(TypedDict, total=False):
-    categories: list
-    icon_url: str
-    id: str
-    url: str
-    value: str
+class SearchListMatch(TypedDict):
+    query: str

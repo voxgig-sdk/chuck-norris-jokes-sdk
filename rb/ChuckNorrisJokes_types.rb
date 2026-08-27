@@ -43,26 +43,10 @@ Joke = Struct.new(
 
 # Request payload for Joke#list.
 #
-# @!attribute [rw] categories
-#   @return [Array, nil]
-#
-# @!attribute [rw] icon_url
-#   @return [String, nil]
-#
-# @!attribute [rw] id
-#   @return [String, nil]
-#
-# @!attribute [rw] url
-#   @return [String, nil]
-#
-# @!attribute [rw] value
+# @!attribute [rw] category
 #   @return [String, nil]
 JokeListMatch = Struct.new(
-  :categories,
-  :icon_url,
-  :id,
-  :url,
-  :value,
+  :category,
   keyword_init: true
 )
 
@@ -93,26 +77,10 @@ Search = Struct.new(
 
 # Request payload for Search#list.
 #
-# @!attribute [rw] categories
-#   @return [Array, nil]
-#
-# @!attribute [rw] icon_url
-#   @return [String, nil]
-#
-# @!attribute [rw] id
-#   @return [String, nil]
-#
-# @!attribute [rw] url
-#   @return [String, nil]
-#
-# @!attribute [rw] value
-#   @return [String, nil]
+# @!attribute [rw] query
+#   @return [String]
 SearchListMatch = Struct.new(
-  :categories,
-  :icon_url,
-  :id,
-  :url,
-  :value,
+  :query,
   keyword_init: true
 )
 

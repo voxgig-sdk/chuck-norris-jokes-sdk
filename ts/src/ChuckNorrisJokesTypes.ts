@@ -20,11 +20,7 @@ export interface Joke {
 }
 
 export interface JokeListMatch {
-  categories?: any[]
-  icon_url?: string
-  id?: string
-  url?: string
-  value?: string
+  category?: string
 
   // Selects a custom action instead of the plain list:
   //   'random'
@@ -42,10 +38,6 @@ export interface Search {
 }
 
 export interface SearchListMatch {
-  categories?: any[]
-  icon_url?: string
-  id?: string
-  url?: string
-  value?: string
+  query: string
 }
 
