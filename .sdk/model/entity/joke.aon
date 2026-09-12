@@ -12,6 +12,7 @@ main: kit: entity: joke: {
       type: "`$ARRAY`"
     }
     {
+      format: "uri"
       name: "icon_url"
       req: true
       short: "URL to Chuck Norris avatar icon"
@@ -24,6 +25,7 @@ main: kit: entity: joke: {
       type: "`$STRING`"
     }
     {
+      format: "uri"
       name: "url"
       req: true
       short: "Direct URL to the joke"
@@ -62,9 +64,13 @@ main: kit: entity: joke: {
           }
           method: "GET"
           orig: "/jokes/random"
-          parts: [
-            "jokes"
-            "random"
+          segments: [
+            {
+              lit: "jokes"
+            }
+            {
+              lit: "random"
+            }
           ]
           select: {
             "$action": "random"

@@ -1,6 +1,14 @@
 # ChuckNorrisJokes SDK configuration
 
 
+# The sekreto plugin DEFINITIONS the model selected per feature, imported
+# above by name from the modules the catalogue's active `plugin.def`
+# entries declare. Handed to each feature (secrets builds its Sekreto
+# with them): a provider kind not listed here is unknown to that SDK.
+FEATURE_PLUGINS = {
+}
+
+
 _shared_config = None
 
 
@@ -65,15 +73,23 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/jokes/categories",
-                "parts": [
-                  "jokes",
-                  "categories",
+                "segments": [
+                  {
+                    "lit": "jokes",
+                  },
+                  {
+                    "lit": "categories",
+                  },
                 ],
                 "select": {},
                 "transform": {
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "jokes",
+                  "categories",
+                ],
               },
             ],
           },
@@ -90,6 +106,7 @@ def make_config():
             "type": "`$ARRAY`",
           },
           {
+            "format": "uri",
             "name": "icon_url",
             "req": True,
             "short": "URL to Chuck Norris avatar icon",
@@ -102,6 +119,7 @@ def make_config():
             "type": "`$STRING`",
           },
           {
+            "format": "uri",
             "name": "url",
             "req": True,
             "short": "Direct URL to the joke",
@@ -114,6 +132,10 @@ def make_config():
             "type": "`$STRING`",
           },
         ],
+        "id": {
+          "field": "id",
+          "name": "id",
+        },
         "name": "joke",
         "op": {
           "list": {
@@ -135,9 +157,13 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/jokes/random",
-                "parts": [
-                  "jokes",
-                  "random",
+                "segments": [
+                  {
+                    "lit": "jokes",
+                  },
+                  {
+                    "lit": "random",
+                  },
                 ],
                 "select": {
                   "$action": "random",
@@ -149,6 +175,10 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body.categories`",
                 },
+                "parts": [
+                  "jokes",
+                  "random",
+                ],
               },
             ],
           },
@@ -165,6 +195,7 @@ def make_config():
             "type": "`$ARRAY`",
           },
           {
+            "format": "uri",
             "name": "icon_url",
             "req": True,
             "short": "URL to Chuck Norris avatar icon",
@@ -177,6 +208,7 @@ def make_config():
             "type": "`$STRING`",
           },
           {
+            "format": "uri",
             "name": "url",
             "req": True,
             "short": "Direct URL to the joke",
@@ -189,6 +221,10 @@ def make_config():
             "type": "`$STRING`",
           },
         ],
+        "id": {
+          "field": "id",
+          "name": "id",
+        },
         "name": "search",
         "op": {
           "list": {
@@ -211,9 +247,13 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/jokes/search",
-                "parts": [
-                  "jokes",
-                  "search",
+                "segments": [
+                  {
+                    "lit": "jokes",
+                  },
+                  {
+                    "lit": "search",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -224,6 +264,10 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body.result`",
                 },
+                "parts": [
+                  "jokes",
+                  "search",
+                ],
               },
             ],
           },

@@ -44,14 +44,22 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/jokes/categories",
-                ["parts"] = {
-                  "jokes",
-                  "categories",
+                ["segments"] = {
+                  {
+                    ["lit"] = "jokes",
+                  },
+                  {
+                    ["lit"] = "categories",
+                  },
                 },
                 ["select"] = {},
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "jokes",
+                  "categories",
                 },
               },
             },
@@ -69,6 +77,7 @@ local function make_config()
             ["type"] = "`$ARRAY`",
           },
           {
+            ["format"] = "uri",
             ["name"] = "icon_url",
             ["req"] = true,
             ["short"] = "URL to Chuck Norris avatar icon",
@@ -81,6 +90,7 @@ local function make_config()
             ["type"] = "`$STRING`",
           },
           {
+            ["format"] = "uri",
             ["name"] = "url",
             ["req"] = true,
             ["short"] = "Direct URL to the joke",
@@ -92,6 +102,10 @@ local function make_config()
             ["short"] = "The actual Chuck Norris joke text",
             ["type"] = "`$STRING`",
           },
+        },
+        ["id"] = {
+          ["field"] = "id",
+          ["name"] = "id",
         },
         ["name"] = "joke",
         ["op"] = {
@@ -114,9 +128,13 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/jokes/random",
-                ["parts"] = {
-                  "jokes",
-                  "random",
+                ["segments"] = {
+                  {
+                    ["lit"] = "jokes",
+                  },
+                  {
+                    ["lit"] = "random",
+                  },
                 },
                 ["select"] = {
                   ["$action"] = "random",
@@ -127,6 +145,10 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body.categories`",
+                },
+                ["parts"] = {
+                  "jokes",
+                  "random",
                 },
               },
             },
@@ -144,6 +166,7 @@ local function make_config()
             ["type"] = "`$ARRAY`",
           },
           {
+            ["format"] = "uri",
             ["name"] = "icon_url",
             ["req"] = true,
             ["short"] = "URL to Chuck Norris avatar icon",
@@ -156,6 +179,7 @@ local function make_config()
             ["type"] = "`$STRING`",
           },
           {
+            ["format"] = "uri",
             ["name"] = "url",
             ["req"] = true,
             ["short"] = "Direct URL to the joke",
@@ -167,6 +191,10 @@ local function make_config()
             ["short"] = "The actual Chuck Norris joke text",
             ["type"] = "`$STRING`",
           },
+        },
+        ["id"] = {
+          ["field"] = "id",
+          ["name"] = "id",
         },
         ["name"] = "search",
         ["op"] = {
@@ -190,9 +218,13 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/jokes/search",
-                ["parts"] = {
-                  "jokes",
-                  "search",
+                ["segments"] = {
+                  {
+                    ["lit"] = "jokes",
+                  },
+                  {
+                    ["lit"] = "search",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -202,6 +234,10 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body.result`",
+                },
+                ["parts"] = {
+                  "jokes",
+                  "search",
                 },
               },
             },

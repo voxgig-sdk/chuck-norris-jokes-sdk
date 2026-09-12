@@ -12,6 +12,7 @@ main: kit: entity: search: {
       type: "`$ARRAY`"
     }
     {
+      format: "uri"
       name: "icon_url"
       req: true
       short: "URL to Chuck Norris avatar icon"
@@ -24,6 +25,7 @@ main: kit: entity: search: {
       type: "`$STRING`"
     }
     {
+      format: "uri"
       name: "url"
       req: true
       short: "Direct URL to the joke"
@@ -62,9 +64,13 @@ main: kit: entity: search: {
           }
           method: "GET"
           orig: "/jokes/search"
-          parts: [
-            "jokes"
-            "search"
+          segments: [
+            {
+              lit: "jokes"
+            }
+            {
+              lit: "search"
+            }
           ]
           select: {
             exist: [

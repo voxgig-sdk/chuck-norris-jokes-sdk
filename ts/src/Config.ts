@@ -10,6 +10,17 @@ const FEATURE_CLASS: Record<string, typeof BaseFeature> = {
 }
 
 
+// Per-feature plugin DEFINITIONS (voxgig/plugin `Definition` values), from
+// the model's active plugin groups. A feature that takes a `plugins` option
+// (secrets over sekreto) reads its own entry; a feature with no plugins has
+// none. Named imports above make each definition statically reachable, so
+// an SDK carries exactly the plugin modules its model selects — the same
+// leanness the old side-effect registry imports bought, without a registry.
+const FEATURE_PLUGINS: Record<string, any[]> = {
+  
+}
+
+
 class Config {
 
   makeFeature(this: any, fn: string) {
@@ -83,15 +94,23 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/jokes/categories",
-              "parts": [
-                "jokes",
-                "categories"
+              "segments": [
+                {
+                  "lit": "jokes"
+                },
+                {
+                  "lit": "categories"
+                }
               ],
               "select": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "jokes",
+                "categories"
+              ]
             }
           ]
         }
@@ -108,6 +127,7 @@ class Config {
           "type": "`$ARRAY`"
         },
         {
+          "format": "uri",
           "name": "icon_url",
           "req": true,
           "short": "URL to Chuck Norris avatar icon",
@@ -120,6 +140,7 @@ class Config {
           "type": "`$STRING`"
         },
         {
+          "format": "uri",
           "name": "url",
           "req": true,
           "short": "Direct URL to the joke",
@@ -132,6 +153,10 @@ class Config {
           "type": "`$STRING`"
         }
       ],
+      "id": {
+        "field": "id",
+        "name": "id"
+      },
       "name": "joke",
       "op": {
         "list": {
@@ -153,9 +178,13 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/jokes/random",
-              "parts": [
-                "jokes",
-                "random"
+              "segments": [
+                {
+                  "lit": "jokes"
+                },
+                {
+                  "lit": "random"
+                }
               ],
               "select": {
                 "$action": "random",
@@ -166,7 +195,11 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body.categories`"
-              }
+              },
+              "parts": [
+                "jokes",
+                "random"
+              ]
             }
           ]
         }
@@ -183,6 +216,7 @@ class Config {
           "type": "`$ARRAY`"
         },
         {
+          "format": "uri",
           "name": "icon_url",
           "req": true,
           "short": "URL to Chuck Norris avatar icon",
@@ -195,6 +229,7 @@ class Config {
           "type": "`$STRING`"
         },
         {
+          "format": "uri",
           "name": "url",
           "req": true,
           "short": "Direct URL to the joke",
@@ -207,6 +242,10 @@ class Config {
           "type": "`$STRING`"
         }
       ],
+      "id": {
+        "field": "id",
+        "name": "id"
+      },
       "name": "search",
       "op": {
         "list": {
@@ -229,9 +268,13 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/jokes/search",
-              "parts": [
-                "jokes",
-                "search"
+              "segments": [
+                {
+                  "lit": "jokes"
+                },
+                {
+                  "lit": "search"
+                }
               ],
               "select": {
                 "exist": [
@@ -241,7 +284,11 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body.result`"
-              }
+              },
+              "parts": [
+                "jokes",
+                "search"
+              ]
             }
           ]
         }
@@ -257,6 +304,7 @@ class Config {
 const config = new Config()
 
 export {
-  config
+  config,
+  FEATURE_PLUGINS,
 }
 

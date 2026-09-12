@@ -56,15 +56,23 @@ module ChuckNorrisJokesConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/jokes/categories",
-                  "parts" => [
-                    "jokes",
-                    "categories",
+                  "segments" => [
+                    {
+                      "lit" => "jokes",
+                    },
+                    {
+                      "lit" => "categories",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "jokes",
+                    "categories",
+                  ],
                 },
               ],
             },
@@ -81,6 +89,7 @@ module ChuckNorrisJokesConfig
               "type" => "`$ARRAY`",
             },
             {
+              "format" => "uri",
               "name" => "icon_url",
               "req" => true,
               "short" => "URL to Chuck Norris avatar icon",
@@ -93,6 +102,7 @@ module ChuckNorrisJokesConfig
               "type" => "`$STRING`",
             },
             {
+              "format" => "uri",
               "name" => "url",
               "req" => true,
               "short" => "Direct URL to the joke",
@@ -105,6 +115,10 @@ module ChuckNorrisJokesConfig
               "type" => "`$STRING`",
             },
           ],
+          "id" => {
+            "field" => "id",
+            "name" => "id",
+          },
           "name" => "joke",
           "op" => {
             "list" => {
@@ -126,9 +140,13 @@ module ChuckNorrisJokesConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/jokes/random",
-                  "parts" => [
-                    "jokes",
-                    "random",
+                  "segments" => [
+                    {
+                      "lit" => "jokes",
+                    },
+                    {
+                      "lit" => "random",
+                    },
                   ],
                   "select" => {
                     "$action" => "random",
@@ -140,6 +158,10 @@ module ChuckNorrisJokesConfig
                     "req" => "`reqdata`",
                     "res" => "`body.categories`",
                   },
+                  "parts" => [
+                    "jokes",
+                    "random",
+                  ],
                 },
               ],
             },
@@ -156,6 +178,7 @@ module ChuckNorrisJokesConfig
               "type" => "`$ARRAY`",
             },
             {
+              "format" => "uri",
               "name" => "icon_url",
               "req" => true,
               "short" => "URL to Chuck Norris avatar icon",
@@ -168,6 +191,7 @@ module ChuckNorrisJokesConfig
               "type" => "`$STRING`",
             },
             {
+              "format" => "uri",
               "name" => "url",
               "req" => true,
               "short" => "Direct URL to the joke",
@@ -180,6 +204,10 @@ module ChuckNorrisJokesConfig
               "type" => "`$STRING`",
             },
           ],
+          "id" => {
+            "field" => "id",
+            "name" => "id",
+          },
           "name" => "search",
           "op" => {
             "list" => {
@@ -202,9 +230,13 @@ module ChuckNorrisJokesConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/jokes/search",
-                  "parts" => [
-                    "jokes",
-                    "search",
+                  "segments" => [
+                    {
+                      "lit" => "jokes",
+                    },
+                    {
+                      "lit" => "search",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -215,6 +247,10 @@ module ChuckNorrisJokesConfig
                     "req" => "`reqdata`",
                     "res" => "`body.result`",
                   },
+                  "parts" => [
+                    "jokes",
+                    "search",
+                  ],
                 },
               ],
             },

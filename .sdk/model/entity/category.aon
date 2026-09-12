@@ -12,9 +12,13 @@ main: kit: entity: category: {
         {
           method: "GET"
           orig: "/jokes/categories"
-          parts: [
-            "jokes"
-            "categories"
+          segments: [
+            {
+              lit: "jokes"
+            }
+            {
+              lit: "categories"
+            }
           ]
           transform: {
             req: "`reqdata`"
