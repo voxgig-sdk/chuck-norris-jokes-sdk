@@ -105,7 +105,7 @@ local results, err = client:Search():list()
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/chuck-norris-jokes` | publish pending — [install from git tag](https://github.com/voxgig-sdk/chuck-norris-jokes-sdk/releases) |
+| TypeScript | `@voxgig-sdk/chuck-norris-jokes-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/chuck-norris-jokes-sdk/releases) |
 | Python | `voxgig-sdk-chuck-norris-jokes` | publish pending — [install from git tag](https://github.com/voxgig-sdk/chuck-norris-jokes-sdk/releases) |
 | PHP | `voxgig-sdk/chuck-norris-jokes` | publish pending — [install from git tag](https://github.com/voxgig-sdk/chuck-norris-jokes-sdk/releases) |
 | Golang | `github.com/voxgig-sdk/chuck-norris-jokes-sdk/go` | `go get github.com/voxgig-sdk/chuck-norris-jokes-sdk/go@latest` |
@@ -119,7 +119,7 @@ local results, err = client:Search():list()
 ### TypeScript
 
 ```ts
-import { ChuckNorrisJokesSDK } from '@voxgig-sdk/chuck-norris-jokes'
+import { ChuckNorrisJokesSDK } from '@voxgig-sdk/chuck-norris-jokes-sdk'
 
 const client = new ChuckNorrisJokesSDK()
 
