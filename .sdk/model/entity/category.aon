@@ -10,6 +10,12 @@ main: kit: entity: category: {
       name: "list"
       points: [
         {
+          contract: {
+            id: "GET /jokes/categories"
+            json: "{\"operationId\":\"getCategories\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"example\":[\"animal\",\"career\",\"celebrity\",\"dev\",\"explicit\",\"fashion\",\"food\",\"history\",\"money\",\"movie\",\"music\",\"political\",\"religion\",\"science\",\"sport\",\"travel\"],\"schema\":{\"items\":{\"type\":\"string\"},\"type\":\"array\"}}},\"description\":\"Successful response with list of categories\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
+          }
           method: "GET"
           orig: "/jokes/categories"
           segments: [

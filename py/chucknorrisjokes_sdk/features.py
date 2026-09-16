@@ -1,12 +1,18 @@
 # ChuckNorrisJokes SDK feature factory
 
 from chucknorrisjokes_sdk.feature.base_feature import ChuckNorrisJokesBaseFeature
+from chucknorrisjokes_sdk.feature.ratelimit_feature import ChuckNorrisJokesRatelimitFeature
+from chucknorrisjokes_sdk.feature.retry_feature import ChuckNorrisJokesRetryFeature
 from chucknorrisjokes_sdk.feature.test_feature import ChuckNorrisJokesTestFeature
+from chucknorrisjokes_sdk.feature.timeout_feature import ChuckNorrisJokesTimeoutFeature
 
 
 _FEATURES = {
     "base": lambda: ChuckNorrisJokesBaseFeature(),
+    "ratelimit": lambda: ChuckNorrisJokesRatelimitFeature(),
+    "retry": lambda: ChuckNorrisJokesRetryFeature(),
     "test": lambda: ChuckNorrisJokesTestFeature(),
+    "timeout": lambda: ChuckNorrisJokesTimeoutFeature(),
 }
 
 

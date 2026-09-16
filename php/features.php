@@ -4,7 +4,10 @@ declare(strict_types=1);
 // ChuckNorrisJokes SDK feature factory
 
 require_once __DIR__ . '/feature/BaseFeature.php';
+require_once __DIR__ . '/feature/RatelimitFeature.php';
+require_once __DIR__ . '/feature/RetryFeature.php';
 require_once __DIR__ . '/feature/TestFeature.php';
+require_once __DIR__ . '/feature/TimeoutFeature.php';
 
 
 class ChuckNorrisJokesFeatures
@@ -14,8 +17,14 @@ class ChuckNorrisJokesFeatures
         switch ($name) {
             case "base":
                 return new ChuckNorrisJokesBaseFeature();
+            case "ratelimit":
+                return new ChuckNorrisJokesRatelimitFeature();
+            case "retry":
+                return new ChuckNorrisJokesRetryFeature();
             case "test":
                 return new ChuckNorrisJokesTestFeature();
+            case "timeout":
+                return new ChuckNorrisJokesTimeoutFeature();
             default:
                 return new ChuckNorrisJokesBaseFeature();
         }
@@ -31,7 +40,10 @@ class ChuckNorrisJokesFeatures
     {
         switch ($name) {
             case "base":
+            case "ratelimit":
+            case "retry":
             case "test":
+            case "timeout":
                 return true;
             default:
                 return false;

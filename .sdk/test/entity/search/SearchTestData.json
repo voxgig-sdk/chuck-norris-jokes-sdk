@@ -33,5 +33,139 @@
         "value": "scc"
       }
     }
+  },
+  "requests": {
+    "GET /jokes/search": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "searchJokes",
+        "parameters": [
+          {
+            "description": "The search query term",
+            "example": "roundhouse",
+            "in": "query",
+            "name": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "result": [
+                    {
+                      "icon_url": "https://api.chucknorris.io/img/avatar/chuck-norris.png",
+                      "id": "abc123",
+                      "url": "https://api.chucknorris.io/jokes/abc123",
+                      "value": "Chuck Norris can roundhouse kick through space and time."
+                    },
+                    {
+                      "icon_url": "https://api.chucknorris.io/img/avatar/chuck-norris.png",
+                      "id": "def456",
+                      "url": "https://api.chucknorris.io/jokes/def456",
+                      "value": "The only thing faster than a Chuck Norris roundhouse kick is Chuck Norris."
+                    }
+                  ],
+                  "total": 2
+                },
+                "schema": {
+                  "properties": {
+                    "result": {
+                      "description": "Array of jokes matching the search query",
+                      "items": {
+                        "properties": {
+                          "categories": {
+                            "description": "Categories associated with the joke",
+                            "items": {
+                              "type": "string"
+                            },
+                            "type": "array"
+                          },
+                          "icon_url": {
+                            "description": "URL to Chuck Norris avatar icon",
+                            "format": "uri",
+                            "type": "string"
+                          },
+                          "id": {
+                            "description": "Unique identifier for the joke",
+                            "type": "string"
+                          },
+                          "url": {
+                            "description": "Direct URL to the joke",
+                            "format": "uri",
+                            "type": "string"
+                          },
+                          "value": {
+                            "description": "The actual Chuck Norris joke text",
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "icon_url",
+                          "id",
+                          "url",
+                          "value"
+                        ],
+                        "type": "object"
+                      },
+                      "type": "array"
+                    },
+                    "total": {
+                      "description": "Total number of jokes found",
+                      "type": "integer"
+                    }
+                  },
+                  "required": [
+                    "total",
+                    "result"
+                  ],
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful response with search results"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "error": {
+                      "description": "Error type",
+                      "type": "string"
+                    },
+                    "message": {
+                      "description": "Error message",
+                      "type": "string"
+                    },
+                    "path": {
+                      "description": "API path that generated the error",
+                      "type": "string"
+                    },
+                    "status": {
+                      "description": "HTTP status code",
+                      "type": "integer"
+                    },
+                    "timestamp": {
+                      "description": "Timestamp of the error",
+                      "format": "date-time",
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Bad request - query parameter missing or invalid"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    }
   }
 }

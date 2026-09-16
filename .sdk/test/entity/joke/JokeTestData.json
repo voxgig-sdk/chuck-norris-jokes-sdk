@@ -33,5 +33,111 @@
         "value": "scc"
       }
     }
+  },
+  "requests": {
+    "GET /jokes/random": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getRandomJoke",
+        "parameters": [
+          {
+            "description": "Filter jokes by category",
+            "example": "dev",
+            "in": "query",
+            "name": "category",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "icon_url": "https://api.chucknorris.io/img/avatar/chuck-norris.png",
+                  "id": "4mP0hJgjQN2l2eKkoJ6sDQ",
+                  "url": "https://api.chucknorris.io/jokes/4mP0hJgjQN2l2eKkoJ6sDQ",
+                  "value": "Water boils faster when Chuck Norris is watching it."
+                },
+                "schema": {
+                  "properties": {
+                    "categories": {
+                      "description": "Categories associated with the joke",
+                      "items": {
+                        "type": "string"
+                      },
+                      "type": "array"
+                    },
+                    "icon_url": {
+                      "description": "URL to Chuck Norris avatar icon",
+                      "format": "uri",
+                      "type": "string"
+                    },
+                    "id": {
+                      "description": "Unique identifier for the joke",
+                      "type": "string"
+                    },
+                    "url": {
+                      "description": "Direct URL to the joke",
+                      "format": "uri",
+                      "type": "string"
+                    },
+                    "value": {
+                      "description": "The actual Chuck Norris joke text",
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "icon_url",
+                    "id",
+                    "url",
+                    "value"
+                  ],
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful response with a random Chuck Norris joke"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "error": {
+                      "description": "Error type",
+                      "type": "string"
+                    },
+                    "message": {
+                      "description": "Error message",
+                      "type": "string"
+                    },
+                    "path": {
+                      "description": "API path that generated the error",
+                      "type": "string"
+                    },
+                    "status": {
+                      "description": "HTTP status code",
+                      "type": "integer"
+                    },
+                    "timestamp": {
+                      "description": "Timestamp of the error",
+                      "format": "date-time",
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Category not found"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    }
   }
 }
