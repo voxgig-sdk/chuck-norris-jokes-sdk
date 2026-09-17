@@ -105,12 +105,12 @@ local results, err = client:Search():list()
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/chuck-norris-jokes-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/chuck-norris-jokes-sdk/releases) |
-| Python | `voxgig-sdk-chuck-norris-jokes` | publish pending — [install from git tag](https://github.com/voxgig-sdk/chuck-norris-jokes-sdk/releases) |
-| PHP | `voxgig-sdk/chuck-norris-jokes` | publish pending — [install from git tag](https://github.com/voxgig-sdk/chuck-norris-jokes-sdk/releases) |
+| TypeScript | `@voxgig-sdk/chuck-norris-jokes-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/chuck-norris-jokes-sdk/tags) |
+| Python | `voxgig-sdk-chuck-norris-jokes` | publish pending — [install from git tag](https://github.com/voxgig-sdk/chuck-norris-jokes-sdk/tags) |
+| PHP | `voxgig-sdk/chuck-norris-jokes` | publish pending — [install from git tag](https://github.com/voxgig-sdk/chuck-norris-jokes-sdk/tags) |
 | Golang | `github.com/voxgig-sdk/chuck-norris-jokes-sdk/go` | `go get github.com/voxgig-sdk/chuck-norris-jokes-sdk/go@latest` |
-| Ruby | `voxgig-sdk-chuck-norris-jokes` | publish pending — [install from git tag](https://github.com/voxgig-sdk/chuck-norris-jokes-sdk/releases) |
-| Lua | `voxgig-sdk-chuck-norris-jokes` | publish pending — [install from git tag](https://github.com/voxgig-sdk/chuck-norris-jokes-sdk/releases) |
+| Ruby | `voxgig-sdk-chuck-norris-jokes` | publish pending — [install from git tag](https://github.com/voxgig-sdk/chuck-norris-jokes-sdk/tags) |
+| Lua | `voxgig-sdk-chuck-norris-jokes` | publish pending — [install from git tag](https://github.com/voxgig-sdk/chuck-norris-jokes-sdk/tags) |
 | Go CLI | `github.com/voxgig-sdk/chuck-norris-jokes-sdk/go-cli` | `go install github.com/voxgig-sdk/chuck-norris-jokes-sdk/go-cli/cmd/chuck-norris-jokes@latest` |
 | Go MCP server | `github.com/voxgig-sdk/chuck-norris-jokes-sdk/go-mcp` | `go get github.com/voxgig-sdk/chuck-norris-jokes-sdk/go-mcp@latest` |
 
